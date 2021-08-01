@@ -15,20 +15,23 @@ TARGET = cheese
 all: clean compile run
 
 compile: ld
-	@ echo "Done!"
-	@ echo "------------"
+	@ echo "| Done!"
+	@ echo "|------------"
 	
 ld: $(OFILES)
-	@ echo "[ LD ] $^"
+	@ echo "|------------"
+	@ echo "| [ LD ] $^"
 	@ $(LD) $^ -o $(TARGET)
+	@ echo "|------------"
 
 %.o: %.c
-	@ echo "[ CC ] $<"
+	@ echo "| [ CC ] $<"
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@ echo "[ CLEAN ]"
+	@ echo "| [ CLEAN ]"
 	@ rm -rf $(OFILES) $(TARGET)
+	@ echo "|------------"
 
 run:
 	@ ./cheese

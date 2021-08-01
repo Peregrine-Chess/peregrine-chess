@@ -1,6 +1,11 @@
 #include <bitboard.h>
+#include <attacks.h>
 
 int main() {
+    init_attacks();
+    printbitboard(get_pawn_attacks(h4, BLACK));
+
+    /*
     // init bitboard
     Bitboard bitboard = 0ULL;
 
@@ -17,4 +22,5 @@ int main() {
 
     // Print the bitboard
     printbitboard(bitboard);
+    */
 }
