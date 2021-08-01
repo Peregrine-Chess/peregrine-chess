@@ -3,7 +3,6 @@
 
 int main() {
     init_attacks();
-    printbitboard(get_pawn_attacks(h4, BLACK));
 
     /*
     // init bitboard
