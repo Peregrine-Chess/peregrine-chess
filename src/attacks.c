@@ -11,6 +11,8 @@ Bitboard king_attacks[64];
 
 void init_attacks() {
     init_pawn_attacks();
+    init_knight_attacks();
+    init_king_attacks();
 }
 
 Bitboard get_pawn_attacks(int square, int color) {
@@ -67,9 +69,17 @@ void init_pawn_attacks() {
     for (int i = 0; i < 64; i ++) {
         pawn_attacks[WHITE][i] = get_pawn_attacks(i, WHITE);
         pawn_attacks[BLACK][i] = get_pawn_attacks(i, BLACK);
+    }
+}
 
+void init_knight_attacks() {
+    for (int i = 0; i < 64; i ++) {
         knight_attacks[i] = get_knight_attacks(i);
+    }
+}
 
+void init_king_attacks() {
+    for (int i = 0; i < 64; i ++) {
         king_attacks[i] = get_king_attacks(i);
     }
 }
