@@ -7,6 +7,7 @@ const Bitboard not_ab_file = 18229723555195321596ULL;
 
 Bitboard pawn_attacks[2][64];
 Bitboard knight_attacks[64];
+Bitboard king_attacks[64];
 
 void init_attacks() {
     init_pawn_attacks();
@@ -45,11 +46,30 @@ Bitboard get_knight_attacks(int square) {
     return attacks;
 }
 
+Bitboard get_king_attacks(int square) {
+    Bitboard bitboard = 0ULL, attacks = 0ULL;
+
+    set_bit(bitboard, square);
+
+    if ((bitboard >> 1) & not_h_file) attacks |= (bitboard >> 1);
+    if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
+    if ((bitboard >> 8) & not_a_file) attacks |= (bitboard >> 8);
+    if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
+    if ((bitboard << 1) & not_a_file) attacks |= (bitboard << 1);
+    if ((bitboard << 9) & not_h_file) attacks |= (bitboard << 9);
+    if ((bitboard << 8) & not_a_file) attacks |= (bitboard << 8);
+    if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
+
+    return attacks;
+}
+
 void init_pawn_attacks() {
     for (int i = 0; i < 64; i ++) {
         pawn_attacks[WHITE][i] = get_pawn_attacks(i, WHITE);
         pawn_attacks[BLACK][i] = get_pawn_attacks(i, BLACK);
 
         knight_attacks[i] = get_knight_attacks(i);
+
+        king_attacks[i] = get_king_attacks(i);
     }
 }

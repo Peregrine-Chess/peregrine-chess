@@ -4,6 +4,8 @@
 int main() {
     init_attacks();
 
+    printbitboard(get_king_attacks(e1));
+
     /*
     // init bitboard
     Bitboard bitboard = 0ULL;
