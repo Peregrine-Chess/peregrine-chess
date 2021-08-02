@@ -181,6 +181,39 @@ Bitboard bishop_attacks_otf(int square, Bitboard block) {
     return attacks;
 }
 
+// Get rook attacks on the fly (legal moves for
+// a specific square on a specific board)
+
+Bitboard rook_attacks_otf(int square, Bitboard block) {
+    Bitboard attacks = 0ULL;
+
+    int sq_rank = rank(square);
+    int sq_file = file(square);
+
+    // Almost the same logic as the normal rook function
+    // except if there is a piece on the square, we break
+    // the loop.
+
+    for (int r = sq_rank + 1; r <= 7; r ++) {
+        attacks |= (1ULL << (r * 8 + sq_file));
+        if ((1ULL << (r * 8 + sq_file)) & block) break;
+    }
+    for (int f = sq_file + 1; f <= 7; f ++) {
+        attacks |= (1ULL << (sq_rank * 8 + f));
+        if ((1ULL << (sq_rank * 8 + f)) & block) break;
+    }
+    for (int r = sq_rank - 1; r >= 0; r --) {
+        attacks |= (1ULL << (r * 8 + sq_file));
+        if ((1ULL << (r * 8 + sq_file)) & block) break;
+    }
+    for (int f = sq_file - 1; f >= 0; f --) {
+        attacks |= (1ULL << (sq_rank * 8 + f));
+        if ((1ULL << (sq_rank * 8 + f)) & block) break;
+    }
+
+    return attacks;
+}
+
 // Initialize pawn attacks
 
 void init_pawn_attacks() {

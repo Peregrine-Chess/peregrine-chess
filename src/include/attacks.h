@@ -36,6 +36,7 @@ Bitboard get_queen_attacks(int square);
 // (legal attacks)
 
 Bitboard bishop_attacks_otf(int square, Bitboard block);
+Bitboard rook_attacks_otf(int square, Bitboard block);
 
 // Functions to initialize piece attack bitboards, 
 // used by the init_attacks() function

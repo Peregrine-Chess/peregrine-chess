@@ -12,14 +12,14 @@ int main() {
 
     Bitboard block = 0ULL;
 
-    set_bit(block, c2);
-    set_bit(block, f3);
-    set_bit(block, g6);
-    set_bit(block, b7);
+    set_bit(block, g4);
+    set_bit(block, e2);
+    set_bit(block, c4);
+    set_bit(block, e6);
 
     printbitboard(block);
 
-    printbitboard(bishop_attacks_otf(e4, block));
+    printbitboard(rook_attacks_otf(e4, block));
 
     /*
     // init bitboard
