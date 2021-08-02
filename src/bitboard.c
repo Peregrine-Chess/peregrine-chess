@@ -60,6 +60,23 @@ void printbitboard(Bitboard bitboard) {
     printf("\n      a  b  c  d  e  f  g  h\n");
 }
 
+// Set occupancy
+
+Bitboard set_occupancy(int index, int bits_in_mask, Bitboard attack_mask) {
+    Bitboard occupancy = 0ULL;
+
+    for (int i = 0; i < bits_in_mask; i ++) {
+        int square = get_least_significant_first_bit(attack_mask);
+        pop_bit(attack_mask, square);
+
+        if (index & (1 << i)) {
+            occupancy |= (1ULL << square);
+        }
+    }
+
+    return occupancy;
+}
+
 // Get the least significant first bit
 
 int get_least_significant_first_bit(Bitboard bitboard) {

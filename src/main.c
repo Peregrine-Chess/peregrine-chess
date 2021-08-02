@@ -10,39 +10,11 @@ int main() {
 
     init_attacks();
 
-    Bitboard block = 0ULL;
+    Bitboard attack_mask = get_bishop_attacks(d4);
 
-    set_bit(block, d7);
-    set_bit(block, d2);
-    set_bit(block, d1);
-    set_bit(block, b4);
-    set_bit(block, g4);
+    for (int i = 0; i < 4096; i ++) {
+        printbitboard(set_occupancy(i, popcount(attack_mask), attack_mask));
+        getchar();
+    }
 
-    printbitboard(block);
-
-    printf("\n\nindex: %d  | coordinates: %s\n\n", get_least_significant_first_bit(block), square_to_coords[get_least_significant_first_bit(block)]);
-
-    Bitboard test = 0ULL;
-
-    set_bit(test, get_least_significant_first_bit(block));
-
-    printbitboard(test);
-    /*
-    // init bitboard
-    Bitboard bitboard = 0ULL;
-
-    // set some bits
-    set_bit(bitboard, e4);
-    set_bit(bitboard, d4);
-
-    // Count number of bits
-    int population = popcount(bitboard);
-    printf("%d full bits.\n", population);
-
-    // Print the board as a 64 bit binary number
-    printbits(sizeof(bitboard), &bitboard);
-
-    // Print the bitboard
-    printbitboard(bitboard);
-    */
 }

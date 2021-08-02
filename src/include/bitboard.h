@@ -44,6 +44,8 @@ int popcount(Bitboard bitboard);
 void printbits(size_t const size, void const * const ptr);
 void printbitboard(Bitboard bitboard);
 
+Bitboard set_occupancy(int index, int bits_in_mask, Bitboard attack_mask);
+
 int get_least_significant_first_bit(Bitboard bitboard);
 
 #endif
