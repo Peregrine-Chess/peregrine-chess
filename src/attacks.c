@@ -107,29 +107,7 @@ Bitboard get_rook_attacks(int square) {
 }
 
 Bitboard get_queen_attacks(int square) {
-    Bitboard attacks = 0ULL;
-
-    int sq_rank = rank(square);
-    int sq_file = file(square);
-
-    for (int r = sq_rank + 1, f = sq_file + 1; r <= 6 && f <= 6; r ++, f ++) 
-        attacks |= (1ULL << (r * 8 + f));
-    for (int r = sq_rank - 1, f = sq_file + 1; r >= 1 && f <= 6; r --, f ++) 
-        attacks |= (1ULL << (r * 8 + f));
-    for (int r = sq_rank + 1, f = sq_file - 1; r <= 6 && f >= 1; r ++, f --) 
-        attacks |= (1ULL << (r * 8 + f));
-    for (int r = sq_rank - 1, f = sq_file - 1; r >= 1 && f >= 1; r --, f --) 
-        attacks |= (1ULL << (r * 8 + f));
-    for (int r = sq_rank + 1; r <= 6; r ++)
-        attacks |= (1ULL << (r * 8 + sq_file));
-    for (int f = sq_file + 1; f <= 6; f ++)
-        attacks |= (1ULL << (sq_rank * 8 + f));
-    for (int r = sq_rank - 1; r >= 1; r --) 
-        attacks |= (1ULL << (r * 8 + sq_file));
-    for (int f = sq_file - 1; f >= 1; f --)
-        attacks |= (1ULL << (sq_rank * 8 + f));
-    
-    return attacks;
+    return get_bishop_attacks(square) | get_rook_attacks(square);
 }
 
 void init_pawn_attacks() {
