@@ -10,6 +10,7 @@ Bitboard knight_attacks[64];
 Bitboard king_attacks[64];
 Bitboard bishop_attacks[64];
 Bitboard rook_attacks[64];
+Bitboard queen_attacks[64];
 
 void init_attacks() {
     init_pawn_attacks();
@@ -105,6 +106,32 @@ Bitboard get_rook_attacks(int square) {
     return attacks;
 }
 
+Bitboard get_queen_attacks(int square) {
+    Bitboard attacks = 0ULL;
+
+    int sq_rank = rank(square);
+    int sq_file = file(square);
+
+    for (int r = sq_rank + 1, f = sq_file + 1; r <= 6 && f <= 6; r ++, f ++) 
+        attacks |= (1ULL << (r * 8 + f));
+    for (int r = sq_rank - 1, f = sq_file + 1; r >= 1 && f <= 6; r --, f ++) 
+        attacks |= (1ULL << (r * 8 + f));
+    for (int r = sq_rank + 1, f = sq_file - 1; r <= 6 && f >= 1; r ++, f --) 
+        attacks |= (1ULL << (r * 8 + f));
+    for (int r = sq_rank - 1, f = sq_file - 1; r >= 1 && f >= 1; r --, f --) 
+        attacks |= (1ULL << (r * 8 + f));
+    for (int r = sq_rank + 1; r <= 6; r ++)
+        attacks |= (1ULL << (r * 8 + sq_file));
+    for (int f = sq_file + 1; f <= 6; f ++)
+        attacks |= (1ULL << (sq_rank * 8 + f));
+    for (int r = sq_rank - 1; r >= 1; r --) 
+        attacks |= (1ULL << (r * 8 + sq_file));
+    for (int f = sq_file - 1; f >= 1; f --)
+        attacks |= (1ULL << (sq_rank * 8 + f));
+    
+    return attacks;
+}
+
 void init_pawn_attacks() {
     for (int i = 0; i < 64; i ++) {
         pawn_attacks[WHITE][i] = get_pawn_attacks(i, WHITE);
@@ -133,5 +160,11 @@ void init_bishop_attacks() {
 void init_rook_attacks() {
     for (int i = 0; i < 64; i ++) {
         rook_attacks[i] = get_rook_attacks(i);
+    }
+}
+
+void init_queen_attacks() {
+    for (int i = 0; i < 64; i ++) {
+        queen_attacks[i] = get_queen_attacks(i);
     }
 }
