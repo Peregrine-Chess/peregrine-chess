@@ -24,8 +24,12 @@ It still doesn't even do anything, why would you want to run it??? Anyway:
 git clone https://github.com/cheese-chess/cheese_c
 # Go into the repo (duh, if you didn't know that, you shouldn't be compiling software)
 cd cheese_c
-# Run make and it will compile and run automagically
+# Run make to compile
 make
+# Then run it
+make run
+# If you want to install it, even if it doesnt do anything, run this as root (using sudo or doas or something, we really don't care):
+make install
 ```
 
 ## Credits

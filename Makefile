@@ -12,7 +12,7 @@ OFILES := $(CFILES:.c=.o)
 
 TARGET = cheese
 
-all: clean compile run
+all: clean compile
 
 compile: ld
 	@ echo "| Done!"
@@ -29,9 +29,18 @@ ld: $(OFILES)
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
+	@ echo "|------------"
 	@ echo "| [ CLEAN ]"
 	@ rm -rf $(OFILES) $(TARGET)
 	@ echo "|------------"
 
 run:
 	@ ./cheese
+
+install:
+	@ echo "|------------"
+	@ echo "| Installing..."
+	@ echo "|------------"
+	@ cp ./cheese /usr/bin
+	@ echo "| Done!"
+	@ echo "|------------"
