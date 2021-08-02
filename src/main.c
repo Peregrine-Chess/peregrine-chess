@@ -4,7 +4,7 @@
 int main() {
     init_attacks();
 
-    printbitboard(get_king_attacks(e1));
+    printbitboard(get_bishop_attacks(e4));
 
     /*
     // init bitboard

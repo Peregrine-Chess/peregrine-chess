@@ -9,6 +9,8 @@
 #define get_bit(bitboard, square) (bitboard & (1ULL << square))
 #define set_bit(bitboard, square) (bitboard |= (1ULL << square))
 #define pop_bit(bitboard, square) (get_bit(bitboard, square) ? bitboard ^= (1ULL << square) : 0)
+#define rank(square) (square / 8)
+#define file(square) (square % 8)
 
 enum {
     a8, b8, c8, d8, e8, f8, g8, h8,

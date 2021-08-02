@@ -7,6 +7,16 @@ A UCI (not yet) chess engine written in C.
 make
 ```
 
+## Roadmap
+This is a short-term roadmap, because I don't know how to make long ones
+
+- [x] Implement bitboards and magic bitboards
+- [x] Implement bit counter
+- [ ] (In Progress) Generate piece attack bitboards
+- [ ] Generate Legal Moves
+- [ ] Negamax Search
+= [ ] Quiescence Search
+
 ## Running
 It still doesn't even do anything, why would you want to run it??? Anyway:
 ```bash
