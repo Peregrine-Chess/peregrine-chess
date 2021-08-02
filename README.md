@@ -15,7 +15,7 @@ This is a short-term roadmap, because I don't know how to make long ones
 - [ ] (In Progress) Generate piece attack bitboards
 - [ ] Generate Legal Moves
 - [ ] Negamax Search
-= [ ] Quiescence Search
+- [ ] Quiescence Search
 
 ## Running
 It still doesn't even do anything, why would you want to run it??? Anyway:
