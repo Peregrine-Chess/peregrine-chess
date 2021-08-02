@@ -5,12 +5,17 @@
 #include <stddef.h>
 #include <stdio.h>
 
+// Macros that just make life easier
+
 #define Bitboard uint64_t
 #define get_bit(bitboard, square) (bitboard & (1ULL << square))
 #define set_bit(bitboard, square) (bitboard |= (1ULL << square))
 #define pop_bit(bitboard, square) (get_bit(bitboard, square) ? bitboard ^= (1ULL << square) : 0)
 #define rank(square) (square / 8)
 #define file(square) (square % 8)
+
+// So we can access square indexes (do we say indexes or indices?)
+// easily
 
 enum {
     a8, b8, c8, d8, e8, f8, g8, h8,
@@ -22,6 +27,8 @@ enum {
     a2, b2, c2, d2, e2, f2, g2, h2,
     a1, b1, c1, d1, e1, f1, g1, h1
 };
+
+// Colors, WHITE = 1, BLACK = 2
 
 enum { WHITE, BLACK };
 
@@ -35,6 +42,8 @@ enum { WHITE, BLACK };
     "a2", "b2", "c2", "d2", "e2", "f2", "g2", "h2",
     "a1", "b1", "c1", "d1", "e1", "f1", "g1", "h1"
 */
+
+// Bitboard utilities
 
 int popcount(Bitboard bitboard);
 void printbits(size_t const size, void const * const ptr);

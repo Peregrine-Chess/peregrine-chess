@@ -1,11 +1,15 @@
 #include <bitboard.h>
 
+// Count the number of 'on' bits in a bitboard
+
 int popcount(uint64_t bitboard) {
   int count = 0;
   while (bitboard) count += bitboard & 1, bitboard >>= 1;
 
   return count;
 }
+
+// Prints the bitboard as a 64 bit binary number
 
 void printbits(size_t const size, void const * const ptr) {
     unsigned char *b = (unsigned char*) ptr;
@@ -20,6 +24,9 @@ void printbits(size_t const size, void const * const ptr) {
     }
     puts("");
 }
+
+// Prints the bitboard in a more user-friendly way,
+// in an 8 by 8 grid with ranks and files.
 
 void printbitboard(uint64_t bitboard) {
     printf("\n");

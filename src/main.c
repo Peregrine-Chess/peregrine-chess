@@ -2,6 +2,8 @@
 #include <attacks.h>
 
 int main() {
+    // Nothing here currently, just used for debugging purposes.
+
     init_attacks();
 
     Bitboard block = 0ULL;
