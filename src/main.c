@@ -12,15 +12,21 @@ int main() {
 
     Bitboard block = 0ULL;
 
+    set_bit(block, d7);
+    set_bit(block, d2);
+    set_bit(block, d1);
+    set_bit(block, b4);
     set_bit(block, g4);
-    set_bit(block, e2);
-    set_bit(block, c4);
-    set_bit(block, e6);
 
     printbitboard(block);
 
-    printbitboard(rook_attacks_otf(e4, block));
+    printf("\n\nindex: %d  | coordinates: %s\n\n", get_least_significant_first_bit(block), square_to_coords[get_least_significant_first_bit(block)]);
 
+    Bitboard test = 0ULL;
+
+    set_bit(test, get_least_significant_first_bit(block));
+
+    printbitboard(test);
     /*
     // init bitboard
     Bitboard bitboard = 0ULL;
