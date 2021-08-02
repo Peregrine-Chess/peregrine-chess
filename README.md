@@ -13,7 +13,7 @@ This is a short-term roadmap, because I don't know how to make long ones
 - [x] Implement bitboards and magic bitboards
 - [x] Implement bit counter
 - [x] Generate piece attack bitboards
-- [ ] Generate Legal Moves
+- [ ] (In Progress) Generate Legal Moves For Each Piece
 - [ ] Negamax Search
 - [ ] Quiescence Search
 

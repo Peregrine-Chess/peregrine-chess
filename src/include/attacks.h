@@ -21,6 +21,8 @@ Bitboard get_bishop_attacks(int square);
 Bitboard get_rook_attacks(int square);
 Bitboard get_queen_attacks(int square);
 
+Bitboard bishop_attacks_otf(int square, Bitboard block);
+
 void init_pawn_attacks();
 void init_knight_attacks();
 void init_king_attacks();

@@ -4,7 +4,16 @@
 int main() {
     init_attacks();
 
-    printbitboard(get_queen_attacks(e4));
+    Bitboard block = 0ULL;
+
+    set_bit(block, c2);
+    set_bit(block, f3);
+    set_bit(block, g6);
+    set_bit(block, b7);
+
+    printbitboard(block);
+
+    printbitboard(bishop_attacks_otf(e4, block));
 
     /*
     // init bitboard
