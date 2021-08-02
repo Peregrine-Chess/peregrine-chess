@@ -24,8 +24,6 @@ void init_attacks() {
     init_pawn_attacks();
     init_knight_attacks();
     init_king_attacks();
-    init_bishop_attacks();
-    init_rook_attacks();
 }
 
 // Get pawn attacks for a specific square and color
@@ -236,29 +234,5 @@ void init_knight_attacks() {
 void init_king_attacks() {
     for (int i = 0; i < 64; i ++) {
         king_attacks[i] = get_king_attacks(i);
-    }
-}
-
-// Initialize bishop attacks
-
-void init_bishop_attacks() {
-    for (int i = 0; i < 64; i ++) {
-        bishop_attacks[i] = get_bishop_attacks(i);
-    }
-}
-
-// Initialize rook attacks
-
-void init_rook_attacks() {
-    for (int i = 0; i < 64; i ++) {
-        rook_attacks[i] = get_rook_attacks(i);
-    }
-}
-
-// Initialize queen attacks
-
-void init_queen_attacks() {
-    for (int i = 0; i < 64; i ++) {
-        queen_attacks[i] = get_queen_attacks(i);
     }
 }

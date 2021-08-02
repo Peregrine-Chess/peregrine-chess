@@ -6,7 +6,7 @@
 
 // Count the number of 'on' bits in a bitboard
 
-int popcount(uint64_t bitboard) {
+int popcount(Bitboard bitboard) {
   int count = 0;
   while (bitboard) count += bitboard & 1, bitboard >>= 1;
 
@@ -32,7 +32,7 @@ void printbits(size_t const size, void const * const ptr) {
 // Prints the bitboard in a more user-friendly way,
 // in an 8 by 8 grid with ranks and files.
 
-void printbitboard(uint64_t bitboard) {
+void printbitboard(Bitboard bitboard) {
     printf("\n");
     for (int rank = 0; rank < 8; rank ++) {
         for (int file = 0; file < 8; file ++) {

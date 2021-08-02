@@ -14,9 +14,6 @@
 extern Bitboard pawn_attacks[2][64];
 extern Bitboard knight_attacks[64];
 extern Bitboard king_attacks[64];
-extern Bitboard bishop_attacks[64];
-extern Bitboard rook_attacks[64];
-extern Bitboard queen_attacks[64];
 
 // Function to initialize attack bitboards
 
@@ -44,8 +41,5 @@ Bitboard rook_attacks_otf(int square, Bitboard block);
 void init_pawn_attacks();
 void init_knight_attacks();
 void init_king_attacks();
-void init_bishop_attacks();
-void init_rook_attacks();
-void init_queen_attacks();
 
 #endif

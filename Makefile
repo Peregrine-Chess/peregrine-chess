@@ -12,7 +12,22 @@ OFILES := $(CFILES:.c=.o)
 
 TARGET = cheese
 
-all: clean compile
+all: welcome clean compile
+
+welcome:
+	@ echo "   .::."
+	@ echo "   _::_"
+	@ echo " _/____\_"
+	@ echo " \      /"
+	@ echo "  \____/"
+	@ echo "  (____)"
+	@ echo "   |  |  C H E E S E"
+	@ echo "   |__|  C H E S S"
+	@ echo "  /    \\"
+	@ echo " (______)"
+	@ echo "(________)"
+	@ echo "/________\\"
+	@ echo ""
 
 compile: ld
 	@ echo "| Done!"
