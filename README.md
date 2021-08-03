@@ -14,7 +14,8 @@ This is a short-term roadmap, because I don't know how to make long term ones
 - [x] Implement bit counter
 - [x] Generate piece attack bitboards
 - [x] Generate occupancy bitboards
-- [ ] (In Progress) Generate magic numbers for magic bitboards
+- [x] Generate magic numbers for magic bitboards
+- [ ] (In progress) Initialize slider piece attacks using plain magic bitboards
 - [ ] Generate legal moves for each piece
 - [ ] Negamax Search
 - [ ] Quiescence Search
