@@ -15,6 +15,10 @@ extern Bitboard pawn_attacks[2][64];
 extern Bitboard knight_attacks[64];
 extern Bitboard king_attacks[64];
 
+// Relevant occupancy bits bitboards
+extern const int relevant_bishop_bits[64];
+extern const int relevant_rook_bits[64];
+
 // Function to initialize attack bitboards
 
 void init_attacks();

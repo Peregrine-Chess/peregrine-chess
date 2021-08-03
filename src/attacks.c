@@ -18,6 +18,28 @@ Bitboard bishop_attacks[64];
 Bitboard rook_attacks[64];
 Bitboard queen_attacks[64];
 
+const int relevant_bishop_bits[64] = {
+    6, 5, 5, 5, 5, 5, 5, 6,
+    5, 5, 5, 5, 5, 5, 5, 5,
+    5, 5, 7, 7, 7, 7, 5, 5,
+    5, 5, 7, 9, 9, 7, 5, 5,
+    5, 5, 7, 9, 9, 7, 5, 5,
+    5, 5, 7, 7, 7, 7, 5, 5,
+    5, 5, 5, 5, 5, 5, 5, 5,
+    6, 5, 5, 5, 5, 5, 5, 6
+};
+
+const int relevant_rook_bits[64] = {
+    12, 11, 11, 11, 11, 11, 11, 12,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    11, 10, 10, 10, 10, 10, 10, 11,
+    12, 11, 11, 11, 11, 11, 11, 12
+};
+
 // Initialize piece bitboards
 
 void init_attacks() {
@@ -81,11 +103,11 @@ Bitboard get_king_attacks(int square) {
 
     if ((bitboard >> 1) & not_h_file) attacks |= (bitboard >> 1);
     if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
-    if ((bitboard >> 8) & not_a_file) attacks |= (bitboard >> 8);
+    if (bitboard >> 8) attacks |= (bitboard >> 8);
     if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
     if ((bitboard << 1) & not_a_file) attacks |= (bitboard << 1);
-    if ((bitboard << 9) & not_h_file) attacks |= (bitboard << 9);
-    if ((bitboard << 8) & not_a_file) attacks |= (bitboard << 8);
+    if ((bitboard << 9) & not_a_file) attacks |= (bitboard << 9);
+    if (bitboard << 8) attacks |= (bitboard << 8);
     if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
 
     return attacks;

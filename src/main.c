@@ -10,11 +10,15 @@ int main() {
 
     init_attacks();
 
-    Bitboard attack_mask = get_bishop_attacks(d4);
+    for (int rank = 0; rank < 8; rank ++) {
+        for (int file = 0; file < 8; file ++) {
+            int square = rank * 8 + file;
 
-    for (int i = 0; i < 4096; i ++) {
-        printbitboard(set_occupancy(i, popcount(attack_mask), attack_mask));
-        getchar();
+            printf(" %d,", popcount(get_king_attacks(square))); 
+        }
+        printf("\n");
     }
+
+    printbitboard(get_king_attacks(h6));
 
 }
