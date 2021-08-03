@@ -8,13 +8,14 @@ make
 ```
 
 ## Roadmap
-This is a short-term roadmap, because I don't know how to make long ones
+This is a short-term roadmap, because I don't know how to make long term ones
 
-- [x] Implement bitboards and magic bitboards
+- [x] Implement bitboards
 - [x] Implement bit counter
 - [x] Generate piece attack bitboards
 - [x] Generate occupancy bitboards
-- [ ] Generate Legal Moves For Each Piece
+- [ ] (In Progress) Generate magic numbers for magic bitboards
+- [ ] Generate legal moves for each piece
 - [ ] Negamax Search
 - [ ] Quiescence Search
 
