@@ -14,7 +14,7 @@
 #define Bitboard uint64_t
 #define get_bit(bitboard, square) (bitboard & (1ULL << square))
 #define set_bit(bitboard, square) (bitboard |= (1ULL << square))
-#define pop_bit(bitboard, square) (get_bit(bitboard, square) ? bitboard ^= (1ULL << square) : 0)
+#define pop_bit(bitboard, square) ((bitboard) &= ~(1ULL << (square)))
 #define rank(square) (square / 8)
 #define file(square) (square % 8)
 
