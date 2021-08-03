@@ -6,6 +6,7 @@
 #define __ATTACKS_H__
 
 #include <bitboard.h>
+#include <magic.h>
 
 #define not_file 0ULL
 
@@ -14,6 +15,11 @@
 extern Bitboard pawn_attacks[2][64];
 extern Bitboard knight_attacks[64];
 extern Bitboard king_attacks[64];
+
+extern Bitboard bishop_attacks[64][512];
+extern Bitboard bishop_masks[64];
+extern Bitboard rook_attacks[64][4096];
+extern Bitboard rook_masks[64];
 
 // Relevant occupancy bits bitboards
 extern const int relevant_bishop_bits[64];
@@ -29,8 +35,12 @@ void init_attacks();
 Bitboard get_pawn_attacks(int square, int color);
 Bitboard get_knight_attacks(int square);
 Bitboard get_king_attacks(int square);
-Bitboard get_bishop_attacks(int square);
-Bitboard get_rook_attacks(int square);
+
+Bitboard mask_bishop_attacks(int square);
+Bitboard mask_rook_attacks(int square);
+Bitboard get_bishop_attacks(int square, Bitboard occupancy);
+Bitboard get_rook_attacks(int square, Bitboard occupancy);
+
 Bitboard get_queen_attacks(int square);
 
 // Functions to generate piece attacks on the fly 
@@ -45,5 +55,7 @@ Bitboard rook_attacks_otf(int square, Bitboard block);
 void init_pawn_attacks();
 void init_knight_attacks();
 void init_king_attacks();
+
+void init_slider_attacks(int is_bishop);
 
 #endif

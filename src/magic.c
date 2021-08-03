@@ -145,7 +145,7 @@ Bitboard bishop_magic_numbers[64] = {
 Bitboard find_magic(int square, int relevant_bits, int is_bishop) {
     Bitboard occupancies[4096], attacks[4096], used_attacks[4096];
 
-    Bitboard attack_mask = is_bishop ? get_bishop_attacks(square) : get_rook_attacks(square);
+    Bitboard attack_mask = is_bishop ? mask_bishop_attacks(square) : mask_rook_attacks(square);
 
     int occupancy_indicies = 1 << relevant_bits;
 
