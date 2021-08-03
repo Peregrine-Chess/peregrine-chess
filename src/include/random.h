@@ -2,15 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+#ifndef __RANDOM_H__
+#define __RANDOM_H__
+
+#include <stdlib.h>
 #include <bitboard.h>
-#include <attacks.h>
-#include <random.h>
 
-int main() {
-    // Nothing here currently, just used for debugging purposes.
+extern unsigned int state;
 
-    init_attacks();
+unsigned int generate_random_number32();
+Bitboard generate_random_number64();
+Bitboard generate_magic_number();
 
-    printbitboard(generate_magic_number());
-    //printf("%ld\n", random());
-}
+#endif
