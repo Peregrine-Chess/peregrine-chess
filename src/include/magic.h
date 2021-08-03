@@ -2,17 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+#ifndef __MAGIC_H__
+#define __MAGIC_H__
+
 #include <bitboard.h>
 #include <attacks.h>
 #include <random.h>
-#include <magic.h>
 
-int main() {
-    // Nothing here currently, just used for debugging purposes.
+#include <string.h>
 
-    init_attacks();
-    init_magic_numbers();
+extern Bitboard rook_magic_numbers[64];
+extern Bitboard bishop_magic_numbers[64];
 
-    printbitboard(generate_magic_number());
-    //printf("%ld\n", random());
-}
+Bitboard find_magic(int square, int relevant_bits, int is_bishop);
+void init_magic_numbers();
+
+#endif
