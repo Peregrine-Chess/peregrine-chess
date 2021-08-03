@@ -5,20 +5,49 @@
 #include <bitboard.h>
 #include <attacks.h>
 
+#include <stdlib.h>
+
+
+// Random number generation to find magic number for magic bitboard.
+unsigned int state = 1804289383;
+
+
+// 32 bit pseudo-random numbers
+unsigned int generate_random_number32() {
+    unsigned int number = state;
+
+    // XOR shift algorithm
+    number ^= number << 13;
+    number ^= number >> 17;
+    number ^= number << 5;
+
+    state = number;
+
+    return number;
+}
+
+// 64 bit peudo-random numbers
+Bitboard generate_random_number64() {
+    Bitboard n1, n2, n3, n4;
+
+    n1 = (Bitboard)(generate_random_number32() & 0xFFFF);
+    n2 = (Bitboard)(generate_random_number32() & 0xFFFF);
+    n3 = (Bitboard)(generate_random_number32() & 0xFFFF);
+    n4 = (Bitboard)(generate_random_number32() & 0xFFFF);
+
+    return n1 | (n2 << 16) | (n3 << 32) | (n4 << 48);
+}
+
+// Generate magic number candidates
+Bitboard generate_magic_number() {
+    return generate_random_number64() & generate_random_number64() & generate_random_number64();
+}
+
 int main() {
     // Nothing here currently, just used for debugging purposes.
 
     init_attacks();
 
-    for (int rank = 0; rank < 8; rank ++) {
-        for (int file = 0; file < 8; file ++) {
-            int square = rank * 8 + file;
-
-            printf(" %d,", popcount(get_king_attacks(square))); 
-        }
-        printf("\n");
-    }
-
-    printbitboard(get_king_attacks(h6));
-
+    printbitboard(generate_magic_number());
+    //printf("%ld\n", random());
 }
