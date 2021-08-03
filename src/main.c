@@ -16,8 +16,8 @@ int main() {
     init_slider_attacks(1);
     printf("Initializing rook attacks....\n");
     init_slider_attacks(0);
-    printf("Initializing magic bitboards....\n");
-    init_magic_numbers(); // <--- This will take some time.
+    //printf("Initializing magic bitboards....\n");
+    //init_magic_numbers(); // <--- This will take some time.
     printf("Done!!!\n");
 
     // define test bitboard
