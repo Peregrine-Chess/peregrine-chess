@@ -44,10 +44,12 @@ const int relevant_rook_bits[64] = {
 
 // Initialize piece bitboards
 
-void init_attacks() {
+int init_attacks() {
     init_pawn_attacks();
     init_knight_attacks();
     init_king_attacks();
+
+    return 1;
 }
 
 // Get pawn attacks for a specific square and color
@@ -238,31 +240,34 @@ Bitboard rook_attacks_otf(int square, Bitboard block) {
 
 // Initialize pawn attacks
 
-void init_pawn_attacks() {
+int init_pawn_attacks() {
     for (int i = 0; i < 64; i ++) {
         pawn_attacks[WHITE][i] = get_pawn_attacks(i, WHITE);
         pawn_attacks[BLACK][i] = get_pawn_attacks(i, BLACK);
     }
+    return 1;
 }
 
 // Initialize knight attacks
 
-void init_knight_attacks() {
+int init_knight_attacks() {
     for (int i = 0; i < 64; i ++) {
         knight_attacks[i] = get_knight_attacks(i);
     }
+    return 1;
 }
 
 // Initialize king attacks
 
-void init_king_attacks() {
+int init_king_attacks() {
     for (int i = 0; i < 64; i ++) {
         king_attacks[i] = get_king_attacks(i);
     }
+    return 1;
 }
 
 // Initialize slider pieces attacks 
-void init_slider_attacks(int is_bishop) {
+int init_slider_attacks(int is_bishop) {
     for (int square = 0; square < 64; square ++){
         bishop_masks[square] = mask_bishop_attacks(square);
         rook_masks[square] = mask_rook_attacks(square);
@@ -290,6 +295,7 @@ void init_slider_attacks(int is_bishop) {
             }
         }
     }
+    return 1;
 }
 
 Bitboard get_bishop_attacks(int square, Bitboard occupancy) {

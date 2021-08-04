@@ -25,10 +25,6 @@ extern Bitboard rook_masks[64];
 extern const int relevant_bishop_bits[64];
 extern const int relevant_rook_bits[64];
 
-// Function to initialize attack bitboards
-
-void init_attacks();
-
 // Functions to generate piece attacks for each 
 // square/color
 
@@ -52,10 +48,12 @@ Bitboard rook_attacks_otf(int square, Bitboard block);
 // Functions to initialize piece attack bitboards, 
 // used by the init_attacks() function
 
-void init_pawn_attacks();
-void init_knight_attacks();
-void init_king_attacks();
+int init_pawn_attacks();
+int init_knight_attacks();
+int init_king_attacks();
 
-void init_slider_attacks(int is_bishop);
+int init_attacks();
+
+int init_slider_attacks(int is_bishop);
 
 #endif

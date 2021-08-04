@@ -141,7 +141,7 @@ Bitboard bishop_magic_numbers[64] = {
 };
 
 
-// Brute forcing magic numbers. 
+// Brute forcing magic numbers, doesn't work. 
 Bitboard find_magic(int square, int relevant_bits, int is_bishop) {
     Bitboard occupancies[4096], attacks[4096], used_attacks[4096];
 
