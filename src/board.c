@@ -4,13 +4,6 @@
 
 #include <board.h>
 
-// FEN dedug positions
-#define empty_board "8/8/8/8/8/8/8/8 w - - "
-#define start_position "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 "
-#define tricky_position "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1 "
-#define killer_position "rnbqkb1r/pp1p1pPp/8/2p1pP2/1P1P4/3P3P/P1P1P3/RNBQKBNR w KQkq e6 0 1"
-#define cmk_position "r2q1rk1/ppp2ppp/2n1bn2/2b1p3/3pP3/3P1NPP/PPP1NPB1/R1BQ1RK1 b - - 0 9 "
-
 Bitboard bitboards[12];
 Bitboard occupancies[3];
 
@@ -63,4 +56,37 @@ void printboard() {
                                        (castle & WQ) ? 'Q' : '-',
                                        (castle & BK) ? 'k' : '-',
                                        (castle & BQ) ? 'q' : '-');
+}
+
+void parsefen(char *fen) {
+    // reset everything
+    memset(bitboards, 0ULL, sizeof(bitboards));
+    memset(occupancies, 0ULL, sizeof(occupancies));
+    side = 0;
+    en_passant = no_sq;
+    castle = 0;
+
+    for (int rank = 0; rank < 8; rank ++) {
+        for (int file = 0; file < 8; file ++) {
+            int square = rank * 8 + file;
+
+            if ((*fen >= 'a' && *fen <= 'z') || (*fen >= 'A' && *fen <= 'Z')) {
+                int piece = char_pieces[*fen];
+                set_bit(bitboards[piece], square);
+                *fen ++;
+            }
+
+            if (*fen >= '0' && *fen <= '9') {
+                int offset = *fen - '0';
+
+                file += offset;
+
+                *fen ++;
+            }
+
+            if (*fen == '/') {
+                *fen ++;
+            }
+        }
+    }
 }
