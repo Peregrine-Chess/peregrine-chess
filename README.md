@@ -14,19 +14,6 @@ A UCI (not yet) chess engine written in C, join our [Discord server](https://dis
 make
 ```
 
-## Roadmap
-This is a short-term roadmap, because I don't know how to make long term ones
-
-- [x] Implement bitboards
-- [x] Implement bit counter
-- [x] Generate piece attack bitboards
-- [x] Generate occupancy bitboards
-- [x] Generate magic numbers for magic bitboards
-- [ ] (In progress) Initialize slider piece attacks using plain magic bitboards
-- [ ] Generate legal moves for each piece
-- [ ] Negamax Search
-- [ ] Quiescence Search
-
 ## Running
 It still doesn't even do anything, why would you want to run it??? Anyway:
 ```bash
