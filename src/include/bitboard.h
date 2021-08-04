@@ -38,11 +38,6 @@ enum { WHITE, BLACK, BOTH };
 
 enum { rook, bishop };
 
-enum { P, N, B, R, Q, K, p, n, b, r, q, k };
-
-// Castling rights
-enum { wk = 1, wq = 2, bk = 4, bq = 8 };
-
 extern const char *square_to_coords[];
 
 // Bitboard utilities

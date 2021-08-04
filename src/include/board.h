@@ -33,4 +33,14 @@ extern int castle;
 */
 
 enum { WK = 1, WQ = 2, BK = 3, BQ = 4 };
+
+// pieces
+enum { P, N, B, R, Q, K, p, n, b, r, q, k };
+
+extern char ascii_pieces[];
+extern char *unicode_pieces[12];
+extern int char_pieces[];
+
+void printboard();
+
 #endif
