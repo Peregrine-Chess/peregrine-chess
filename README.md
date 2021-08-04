@@ -1,4 +1,8 @@
-# Cheese Chess Engine (CCE)
+<div style="text-align:center">
+    <img src="./assets/banner.png" style="max-width:50vw;"><br>
+    <h1>Cheese Chess Engine (CCE)</h1>
+    
+</div>
 
 A UCI (not yet) chess engine written in C.
 
