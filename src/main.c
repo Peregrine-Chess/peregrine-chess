@@ -11,8 +11,8 @@
 int main() {
     // Nothing here currently, just used for debugging purposes.
     logger(init_attacks(), "Initializing knight, king, and pawn attacks....");
-    logger(init_slider_attacks(1), "Initializing bishop attacks....");
-    logger(init_slider_attacks(0), "Initializing rook attacs....");
+    logger(init_slider_attacks(bishop), "Initializing bishop attacks....");
+    logger(init_slider_attacks(rook), "Initializing rook attacs....");
     //printf("Initializing magic bitboards....\n");
     //init_magic_numbers(); // <--- This will take some time.
     printf("Done!!!\n");
