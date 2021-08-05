@@ -5,6 +5,7 @@ CFLAGS := \
 	-Isrc/include \
 	-Wall \
 	-Wextra \
+	-Wno-unused-value\
 	-std=gnu99 \
 
 CFILES := $(shell find src/ -name '*.c')
