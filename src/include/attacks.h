@@ -37,7 +37,7 @@ Bitboard mask_rook_attacks(int square);
 Bitboard get_bishop_attacks(int square, Bitboard occupancy);
 Bitboard get_rook_attacks(int square, Bitboard occupancy);
 
-Bitboard get_queen_attacks(int square);
+Bitboard get_queen_attacks(int square, Bitboard occupancy);
 
 // Functions to generate piece attacks on the fly 
 // (legal attacks)

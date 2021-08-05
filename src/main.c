@@ -13,7 +13,7 @@
 int main() {
   init_all(); // INIT *EVERYTHING*
 
-  parsefen(tricky_position);
+  Bitboard occupancy = 0ULL;
 
-  printboard();
+  printbitboard(get_queen_attacks(e4, occupancy));
 }

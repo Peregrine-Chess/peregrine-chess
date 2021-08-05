@@ -165,13 +165,6 @@ Bitboard mask_rook_attacks(int square) {
   return attacks;
 }
 
-// Get queen attacks for a specific square
-
-Bitboard get_queen_attacks(int square) {
-  // The queen is easy, just combine rook and bishop (:
-  return mask_bishop_attacks(square) | mask_rook_attacks(square);
-}
-
 // Get bishop attacks on the fly (legal moves for
 // a specific square on a specific board)
 
@@ -312,4 +305,22 @@ Bitboard get_rook_attacks(int square, Bitboard occupancy) {
   occupancy >>= 64 - relevant_rook_bits[square];
 
   return rook_attacks[square][occupancy];
+}
+
+Bitboard get_queen_attacks(int square, Bitboard occupancy) {
+  Bitboard queen_attacks = 0ULL, bishop_occupancy = occupancy, rook_occupancy = occupancy;
+
+  bishop_occupancy &= bishop_masks[square];
+  bishop_occupancy *= bishop_magic_numbers[square];
+  bishop_occupancy >>= 64 - relevant_bishop_bits[square];
+
+  queen_attacks = bishop_attacks[square][bishop_occupancy];
+
+  rook_occupancy &= rook_masks[square];
+  rook_occupancy *= rook_magic_numbers[square];
+  rook_occupancy >>= 64 - relevant_rook_bits[square];
+
+  queen_attacks |= rook_attacks[square][rook_occupancy];
+
+  return queen_attacks;
 }
