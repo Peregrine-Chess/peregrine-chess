@@ -13,7 +13,10 @@
 int main() {
   init_all(); // INIT *EVERYTHING*
 
-  Bitboard occupancy = 0ULL;
+  parsefen(start_position);
 
-  printbitboard(get_queen_attacks(e4, occupancy));
+  printboard();
+
+  print_attacked_squares(WHITE);
+  print_attacked_squares(BLACK);
 }

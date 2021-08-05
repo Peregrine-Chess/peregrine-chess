@@ -324,3 +324,32 @@ Bitboard get_queen_attacks(int square, Bitboard occupancy) {
 
   return queen_attacks;
 }
+
+// Is square attacked by opponent
+int is_square_attacked(int square, int color) {
+  if ((color == WHITE) && (pawn_attacks[BLACK][square]) & bitboards[P]) return 1;
+  if ((color == BLACK) && (pawn_attacks[WHITE][square]) & bitboards[p]) return 1;
+  if (knight_attacks[square] & ((color == WHITE) ? bitboards[N] : bitboards[n])) return 1;
+  if (get_bishop_attacks(square, occupancies[BOTH]) & ((color == WHITE) ? bitboards[B] : bitboards[b])) return 1;
+  if (get_rook_attacks(square, occupancies[BOTH]) & ((color == WHITE) ? bitboards[R] : bitboards[r])) return 1;    
+  if (get_queen_attacks(square, occupancies[BOTH]) & ((color == WHITE) ? bitboards[Q] : bitboards[q])) return 1;
+  if (king_attacks[square] & ((color == WHITE) ? bitboards[K] : bitboards[k])) return 1;
+  
+  return 0;
+}
+
+void print_attacked_squares(int color) {
+  for (int rank = 0; rank < 8; rank ++) {
+    for (int file = 0; file < 8; file ++) {
+      int square = rank * 8 + file;
+
+      if (!file) {
+        printf(" %d ", 8 - rank);
+      }
+
+      printf(" %d", is_square_attacked(square, color));
+    }
+    printf("\n");
+  }
+  printf("\n    a b c d e f g h\n\n");
+}
