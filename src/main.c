@@ -11,9 +11,9 @@
 #include <misc.h>
 
 int main() {
-    init_all(); // INIT *EVERYTHING*
+  init_all(); // INIT *EVERYTHING*
 
-    parsefen(tricky_position);
+  parsefen(tricky_position);
 
-    printboard();
+  printboard();
 }

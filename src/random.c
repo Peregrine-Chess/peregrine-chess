@@ -10,31 +10,31 @@ unsigned int state = 1804289383;
 
 // 32 bit pseudo-random numbers
 unsigned int generate_random_number32() {
-    unsigned int number = state;
+  unsigned int number = state;
 
-    // XOR shift algorithm
-    number ^= number << 13;
-    number ^= number >> 17;
-    number ^= number << 5;
+  // XOR shift algorithm
+  number ^= number << 13;
+  number ^= number >> 17;
+  number ^= number << 5;
 
-    state = number;
+  state = number;
 
-    return number;
+  return number;
 }
 
 // 64 bit peudo-random numbers
 Bitboard generate_random_number64() {
-    Bitboard n1, n2, n3, n4;
+  Bitboard n1, n2, n3, n4;
 
-    n1 = (Bitboard)(generate_random_number32() & 0xFFFF);
-    n2 = (Bitboard)(generate_random_number32() & 0xFFFF);
-    n3 = (Bitboard)(generate_random_number32() & 0xFFFF);
-    n4 = (Bitboard)(generate_random_number32() & 0xFFFF);
+  n1 = (Bitboard)(generate_random_number32() & 0xFFFF);
+  n2 = (Bitboard)(generate_random_number32() & 0xFFFF);
+  n3 = (Bitboard)(generate_random_number32() & 0xFFFF);
+  n4 = (Bitboard)(generate_random_number32() & 0xFFFF);
 
-    return n1 | (n2 << 16) | (n3 << 32) | (n4 << 48);
+  return n1 | (n2 << 16) | (n3 << 32) | (n4 << 48);
 }
 
 // Generate magic number candidates
 Bitboard generate_magic_number() {
-    return generate_random_number64() & generate_random_number64() & generate_random_number64();
+  return generate_random_number64() & generate_random_number64() & generate_random_number64();
 }

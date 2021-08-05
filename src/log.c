@@ -5,15 +5,15 @@
 #include <log.h>
 
 void logger(int status, char *message) {
-    if (status) {
-        fprintf(stderr, "\033[0;32m");
-        fprintf(stderr, "[ OK ] ");
-        fprintf(stderr, "\033[0m");
-        fprintf(stderr, "%s\n", message);
-    } else {
-        fprintf(stderr, "\033[0;31m");
-        fprintf(stderr, "[ FAIL ] ");
-        fprintf(stderr, "\033[0m");
-        fprintf(stderr, "%s\n", message);
-    }
+  if (status) {
+    fprintf(stderr, "\033[0;32m");
+    fprintf(stderr, "[ OK ] ");
+    fprintf(stderr, "\033[0m");
+    fprintf(stderr, "%s\n", message);
+  } else {
+    fprintf(stderr, "\033[0;31m");
+    fprintf(stderr, "[ FAIL ] ");
+    fprintf(stderr, "\033[0m");
+    fprintf(stderr, "%s\n", message);
+  }
 }
