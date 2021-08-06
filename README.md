@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./assets/banner.png" style="max-width:15vw;"><br>
+    <img src="./assets/cheese_nobg.png" style="max-width:15vw;"><br>
     <img src="https://img.shields.io/github/commit-activity/w/cheese-chess/cheese_c?style=flat-square">
     <img src="https://img.shields.io/github/license/cheese-chess/cheese_c?style=flat-square">
     <img src="https://img.shields.io/discord/872146521183903804?style=flat-square">
