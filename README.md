@@ -7,6 +7,8 @@
 
 </div>
 
+> GO TO [NEW REPO](https://github.com/cheese-chess/cheese_chess)
+
 A UCI (not yet) chess engine written in C, join our [Discord server](https://discord.gg/FBzkBQhz3A).
 
 ## Dependancies
