@@ -2,21 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+#ifndef __MOVEGEN_H__
+#define __MOVEGEN_H__
+
 #include <bitboard.h>
 #include <attacks.h>
-#include <random.h>
-#include <magic.h>
-#include <log.h>
-#include <board.h>
-#include <misc.h>
-#include <movegen.h>
 
-int main() {
-  init_all(); // INIT *EVERYTHING*
+void gen_moves();
 
-  parsefen(start_position);
-
-  printboard();
-
-  gen_moves();
-}
+#endif

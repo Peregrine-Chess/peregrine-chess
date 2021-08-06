@@ -7,6 +7,7 @@
 
 #include <bitboard.h>
 #include <magic.h>
+#include <board.h>
 
 #define not_file 0ULL
 
@@ -55,5 +56,9 @@ int init_king_attacks();
 int init_attacks();
 
 int init_slider_attacks(int is_bishop);
+
+// Is square attacked by opponent
+int is_square_attacked(int square, int color);
+void print_attacked_squares(int color);
 
 #endif

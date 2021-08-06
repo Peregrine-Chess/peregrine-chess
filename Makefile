@@ -5,7 +5,10 @@ CFLAGS := \
 	-Isrc/include \
 	-Wall \
 	-Wextra \
+	-Wno-unused-variable\
+	-Wno-unused-but-set-variable\
 	-Wno-unused-value\
+	-Wno-unused-parameter\
 	-std=gnu99 \
 
 CFILES := $(shell find src/ -name '*.c')
