@@ -75,7 +75,7 @@ void parsefen(char *fen) {
 
         set_bit(bitboards[piece], square);
 
-        *fen++;
+        fen++;
       }
       
       if (*fen >= '0' && *fen <= '9') {
@@ -93,15 +93,15 @@ void parsefen(char *fen) {
         
         file += offset;
         
-        *fen++;
+        fen++;
       }
       
       if (*fen == '/')
-        *fen++;
+        fen++;
     }
   }
   
-  *fen++;
+  fen++;
 
   (*fen == 'w') ? (side = WHITE) : (side = BLACK);
 
