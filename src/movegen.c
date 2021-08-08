@@ -60,6 +60,27 @@ void gen_moves() {
                     pop_bit(bitboard, start_square);
                 }
             }
+            // Castling stuff
+            if (piece == K) {
+                // King side
+                if (castle & WK) {
+                    // squares in between must be empty
+                    if (!get_bit(occupancies[BOTH], f1) && !get_bit(occupancies[BOTH], g1)) {
+                        // squares must not be under attack
+                        if (!is_square_attacked(e1, BLACK) && !is_square_attacked(f1, BLACK) && !is_square_attacked(g1, BLACK)) {
+                            printf("castling: e1g1\n");
+                        }
+                    }
+                }
+                // Queen side
+                if (castle & WQ) {
+                    if (!get_bit(occupancies[BOTH], d1) && !get_bit(occupancies[BOTH], c1) && !get_bit(occupancies[BOTH], b1)) {
+                        if (!is_square_attacked(d1, BLACK) && !is_square_attacked(c1, BLACK) && !is_square_attacked(e1, BLACK)) {
+                            printf("castling: e1c1\n");
+                        }
+                    }
+                }
+            }
         } else {
             if (piece == p) {
                 while (bitboard) {

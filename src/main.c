@@ -14,7 +14,7 @@
 int main() {
   init_all(); // INIT *EVERYTHING*
 
-  parsefen(start_position);
+  parsefen(tricky_position);
 
   printboard();
 
