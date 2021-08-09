@@ -132,6 +132,27 @@ void gen_moves() {
                     pop_bit(bitboard, start_square);
                 }
             }
+
+            if (piece == k) {
+                // King side
+                if (castle & BK) {
+                    // squares in between must be empty
+                    if (!get_bit(occupancies[BOTH], f8) && !get_bit(occupancies[BOTH], g8)) {
+                        // squares must not be under attack
+                        if (!is_square_attacked(e8, WHITE) && !is_square_attacked(f8, WHITE) && !is_square_attacked(g8, WHITE)) {
+                            printf("castling: e8g8\n");
+                        }
+                    }
+                }
+                // Queen side
+                if (castle & BQ) {
+                    if (!get_bit(occupancies[BOTH], d8) && !get_bit(occupancies[BOTH], c8) && !get_bit(occupancies[BOTH], b8)) {
+                        if (!is_square_attacked(d8, WHITE) && !is_square_attacked(c8, WHITE) && !is_square_attacked(e8, WHITE)) {
+                            printf("castling: e1c1\n");
+                        }
+                    }
+                }
+            }
         }
         
         // TODO genarate knight moves
