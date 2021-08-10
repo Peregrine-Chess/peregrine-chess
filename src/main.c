@@ -14,9 +14,16 @@
 int main() {
   init_all(); // INIT *EVERYTHING*
 
-  parsefen(tricky_position);
+    parsefen("r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1 ");
+    printboard();
 
-  printboard();
-
-  gen_moves();
+    int move = 0;
+    
+    move = (move | 63) << 6;
+    
+    printbitboard(move);
+    
+    int target_square = (move & 0xfc0) >> 6;
+    
+    printf("target square: %d   %s\n", target_square, square_to_coords[target_square]);
 }
