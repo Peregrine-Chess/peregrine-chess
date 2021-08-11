@@ -7,7 +7,9 @@
 
 </div>
 
-A UCI (not yet) chess engine written in C, join our [Discord server](https://discord.gg/FBzkBQhz3A).
+A UCI (not yet) chess engine written in C.
+<br>
+Join our [Discord server](https://discord.gg/FBzkBQhz3A).
 
 ## Dependancies
 ```
