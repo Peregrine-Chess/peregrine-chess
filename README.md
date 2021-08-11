@@ -11,7 +11,7 @@ A UCI (not yet) chess engine written in C.
 <br>
 Join our [Discord server](https://discord.gg/FBzkBQhz3A).
 
-## Dependancies
+## Dependencies
 ```
 make
 ```
