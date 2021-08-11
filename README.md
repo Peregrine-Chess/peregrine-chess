@@ -16,19 +16,19 @@ Join our [Discord server](https://discord.gg/FBzkBQhz3A).
 make
 ```
 
-## Running
-It still doesn't even do anything, why would you want to run it??? Anyway:
+## Build Instructions
+#### Note: This project doesn't do anything yet.
 ```bash
-# Clone this repo
+# Clone the repo
 git clone https://github.com/cheese-chess/cheese_chess
-# Go into the repo (duh, if you didn't know that, you shouldn't be compiling software)
+# Enter the repo directory
 cd cheese_c
 # Run make to compile
 make
-# Then run it
+# To run it...
 make run
-# If you want to install it, even if it doesnt do anything, run this as root (using sudo or doas or something, we really don't care):
-make install
+# To install it...
+make install # you may need to run this as root - use sudo/doas as required.
 ```
 
 ## Credits
