@@ -33,5 +33,6 @@ make install # you may need to run this as root - use sudo/doas as required.
 
 ## Credits
 - [@aa2006](https://github.com/aa2006) for code.
-- [@segfaultdev](https://github.com/segfaultdev) for idk what.
+- [@segfaultdev](https://github.com/segfaultdev) for reformatting code.
+- [@nekodjin](https://github.com/nekodjin) for updating README.md
 - [@DamieFC](https://github.com/DamieFC) for adding extra to the duh
