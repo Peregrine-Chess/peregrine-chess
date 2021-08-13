@@ -5,6 +5,8 @@
 #ifndef __MOVE_H__
 #define __MOVE_H__
 
+#include <board.h>
+
 #define encode_move(source, target, piece, promoted, capture, double, enpassant, castling) \
     (source) |          \
     (target << 6) |     \
@@ -15,7 +17,7 @@
     (enpassant << 22) | \
     (castling << 23)    \
     
-#define get_move_source(move) (move & 0x3f)
+#define get_move_start(move) (move & 0x3f)
 #define get_move_target(move) ((move & 0xfc0) >> 6)
 #define get_move_piece(move) ((move & 0xf000) >> 12)
 #define get_move_promoted(move) ((move & 0xf0000) >> 16)
@@ -23,5 +25,16 @@
 #define get_move_double(move) (move & 0x200000)
 #define get_move_enpassant(move) (move & 0x400000)
 #define get_move_castling(move) (move & 0x800000)
+
+typedef struct moves {
+    int moves[256];
+    int count;
+} moves;
+
+extern char promoted_pieces[];
+
+void print_move(int move);
+void print_move_list(moves *move_list);
+void add_move(moves *move_list, int move);
 
 #endif
