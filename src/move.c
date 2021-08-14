@@ -44,3 +44,26 @@ void add_move(moves *move_list, int move) {
 
     move_list->count ++;
 }
+
+int make_move(int move, int move_flag) {
+    if (move_flag == all_moves) {
+        copy_board();
+
+        int start_square = get_move_start(move);
+        int target_square = get_move_target(move);
+        int piece = get_move_piece(move);
+        int promoted = get_move_promoted(move);
+        int capture = get_move_capture(move);
+        int is_double = get_move_double(move);
+        int enpass = get_move_enpassant(move);
+        int castling = get_move_castling(move);
+
+        pop_bit(bitboards[piece], start_square);
+        set_bit(bitboards[piece], target_square);
+        
+    } else {
+        if (get_move_capture(move))
+            make_move(move, all_moves);
+        else return 0;
+    }
+}

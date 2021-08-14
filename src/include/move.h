@@ -31,10 +31,13 @@ typedef struct moves {
     int count;
 } moves;
 
+enum { all_moves, only_captures };
+
 extern char promoted_pieces[];
 
 void print_move(int move);
 void print_move_list(moves *move_list);
 void add_move(moves *move_list, int move);
+int make_move(int move, int move_flag);
 
 #endif
