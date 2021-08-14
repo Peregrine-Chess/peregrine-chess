@@ -6,8 +6,9 @@
 #define __MOVEGEN_H__
 
 #include <bitboard.h>
+#include <move.h>
 #include <attacks.h>
 
-void gen_moves();
+void gen_moves(moves *move_list);
 
 #endif

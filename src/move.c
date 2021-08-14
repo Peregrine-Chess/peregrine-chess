@@ -35,9 +35,8 @@ void print_move_list(moves *move_list) {
                                                                                 get_move_double(move) ? 1 : 0,
                                                                                 get_move_enpassant(move) ? 1 : 0,
                                                                                 get_move_castling(move) ? 1 : 0);
-        
-        printf("\n\n    Total number of moves: %d\n\n", move_list->count);
     }
+    printf("\n\n    Total number of moves: %d\n\n", move_list->count);
 }
 
 void add_move(moves *move_list, int move) {

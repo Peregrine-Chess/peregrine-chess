@@ -16,10 +16,14 @@ int main() {
     // init EVERYTHING
     init_all();
     
-    moves move_list[1];
-    move_list->count = 0;
+    parsefen(tricky_position);
+    printboard();
 
-    add_move(move_list, encode_move(d7, e8, P, Q, 1, 0, 0, 0));
+    moves move_list[1];
+
+    gen_moves(move_list);
 
     print_move_list(move_list);
+    
+    return 0;
 }
