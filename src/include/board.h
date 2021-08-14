@@ -7,6 +7,7 @@
 
 #include <bitboard.h>
 #include <attacks.h>
+#include <string.h>
 
 // FEN dedug positions
 #define empty_board "8/8/8/8/8/8/8/8 w - - "
@@ -25,6 +26,11 @@ extern int side;
 extern int en_passant;
 // Castling rights
 extern int castle;
+
+// Copies for board preservation stuff
+extern Bitboard bitboards_copy[12];
+extern Bitboard occupancies_copy[3];
+extern int side_copy, en_passant_copy, castle_copy;
 
 /*
     bin  dec
@@ -53,4 +59,8 @@ void printboard();
 // parse FEN strings
 void parsefen(char *fen);
 
+// Preserve board
+void copy_board();
+
+void restore_board();
 #endif

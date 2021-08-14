@@ -11,6 +11,10 @@ int side = -1;
 int en_passant = no_sq;
 int castle;
 
+Bitboard bitboards_copy[12];
+Bitboard occupancies_copy[3];
+int side_copy, en_passant_copy, castle_copy;
+
 char ascii_pieces[12] = "PNBRQKpnbrqk";
 char *unicode_pieces[12] = {"♙", "♘", "♗", "♖", "♕", "♔", "♟︎", "♞", "♝", "♜", "♛", "♚"};
 int char_pieces[] = {
@@ -139,4 +143,18 @@ void parsefen(char *fen) {
   
   occupancies[BOTH] |= occupancies[WHITE];
   occupancies[BOTH] |= occupancies[BLACK];
+}
+
+void copy_board() {
+    memcpy(bitboards_copy, bitboards, sizeof(bitboards));
+    memcpy(occupancies_copy, occupancies, sizeof(occupancies));
+
+    side_copy = side, en_passant_copy = en_passant, castle_copy = castle;
+}
+
+void restore_board() {
+    memcpy(bitboards, bitboards_copy, sizeof(bitboards_copy));
+    memcpy(occupancies, occupancies_copy, sizeof(occupancies_copy));
+
+    side = side_copy, en_passant = en_passant_copy, castle = castle_copy;
 }

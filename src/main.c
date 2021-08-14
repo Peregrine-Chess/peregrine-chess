@@ -19,11 +19,12 @@ int main() {
     parsefen(tricky_position);
     printboard();
 
-    moves move_list[1];
+    copy_board();
+    parsefen(empty_board);
+    printboard();
 
-    gen_moves(move_list);
-
-    print_move_list(move_list);
+    restore_board();
+    printboard();
     
     return 0;
 }
