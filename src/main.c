@@ -16,25 +16,28 @@ int main() {
     // init EVERYTHING
     init_all();
     
-    parsefen(tricky_position);
+    parsefen("r3k2r/p1ppRpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R b KQkq - 0 1 ");
     printboard();
 
     moves move_list[1];
+    move_list->count = 0;
 
     gen_moves(move_list);
 
-    for (int count = 0; count < move_list->count; count ++) {
-        int move = move_list->moves[count];
+    for (int move_count = 0; move_count < move_list->count; move_count++) {
+        int move = move_list->moves[move_count];
+        
         copy_board();
 
-        make_move(move, all_moves);
+        if (!make_move(move, all_moves))
+            continue;
+        
         printboard();
         getchar();
-
+        
         restore_board();
         printboard();
+        
         getchar();
     }
-
-    return 0;
 }

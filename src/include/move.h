@@ -34,6 +34,7 @@ typedef struct moves {
 enum { all_moves, only_captures };
 
 extern char promoted_pieces[];
+extern const int castling_rights[];
 
 void print_move(int move);
 void print_move_list(moves *move_list);

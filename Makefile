@@ -9,6 +9,7 @@ CFLAGS := \
 	-Wno-unused-but-set-variable\
 	-Wno-unused-value\
 	-Wno-unused-parameter\
+	-Wno-return-type\
 	-std=gnu99 \
 
 CFILES := $(shell find src/ -name '*.c')
