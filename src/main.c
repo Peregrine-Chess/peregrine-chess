@@ -24,6 +24,8 @@ int main() {
 
     gen_moves(move_list);
 
+    int start = get_time_ms();
+
     for (int move_count = 0; move_count < move_list->count; move_count++) {
         int move = move_list->moves[move_count];
         
@@ -40,4 +42,7 @@ int main() {
         
         getchar();
     }
+
+    printf("time taken to execute: %d ms\n", get_time_ms() - start);
+    getchar();
 }
