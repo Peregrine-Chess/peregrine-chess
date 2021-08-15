@@ -11,38 +11,18 @@
 #include <misc.h>
 #include <movegen.h>
 #include <move.h>
+#include <time.h>
+#include <perft.h>
 
 int main() {
     // init EVERYTHING
     init_all();
     
-    parsefen("r3k2r/p1ppRpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R b KQkq - 0 1 ");
+    parsefen(start_position);
     printboard();
-
-    moves move_list[1];
-    move_list->count = 0;
-
-    gen_moves(move_list);
 
     int start = get_time_ms();
 
-    for (int move_count = 0; move_count < move_list->count; move_count++) {
-        int move = move_list->moves[move_count];
-        
-        copy_board();
-
-        if (!make_move(move, all_moves))
-            continue;
-        
-        printboard();
-        getchar();
-        
-        restore_board();
-        printboard();
-        
-        getchar();
-    }
-
-    printf("time taken to execute: %d ms\n", get_time_ms() - start);
+    perft_test(3);
     getchar();
 }
