@@ -11,7 +11,6 @@
 
 extern long nodes;
 
-void perft_driver(int depth);
-void perft_test(int depth);
+uint64_t Perft(int depth);
 
 #endif

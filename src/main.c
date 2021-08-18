@@ -23,6 +23,8 @@ int main() {
 
     int start = get_time_ms();
 
-    perft_test(3);
+    printf("Nodes: %ld\n", Perft(2));
+
+    printf("Time: %dms\n", get_time_ms() - start);
     getchar();
 }
