@@ -1,6 +1,11 @@
 LD = gcc
 CC = gcc
 
+BLUE=\033[0;34m
+GREEN=\033[;32m
+YELLOW=\033[;33m
+NC=\033[0m
+
 CFLAGS := \
 	-Isrc/include \
 	-Wall \
@@ -33,32 +38,24 @@ welcome:
 	@ echo ""
 
 compile: ld
-	@ echo "| Done!"
-	@ echo "|------------"
+	@ echo "Done!"
 	
 ld: $(OFILES)
-	@ echo "|------------"
-	@ echo "| [ LD ] $^"
+	@ echo -e "${GREEN}[ LD ]${NC} $^"
 	@ $(LD) $^ -o $(TARGET)
-	@ echo "|------------"
 
 %.o: %.c
-	@ echo "| [ CC ] $<"
+	@ echo -e "${BLUE}[ CC ]${NC} $<"
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@ echo "|------------"
-	@ echo "| [ CLEAN ]"
+	@ echo -e "${YELLOW}[ CLEAN ]${NC}"
 	@ rm -rf $(OFILES) $(TARGET)
-	@ echo "|------------"
 
 run:
 	@ ./cheese
 
 install:
-	@ echo "|------------"
-	@ echo "| Installing..."
-	@ echo "|------------"
+	@ echo "Installing..."
 	@ cp ./cheese /usr/bin
-	@ echo "| Done!"
-	@ echo "|------------"
+	@ echo "Done!"
