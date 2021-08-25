@@ -13,6 +13,7 @@
 #include <move.h>
 #include <time.h>
 #include <perft.h>
+#include <uci.h>
 
 int main() {
     // init EVERYTHING
@@ -21,10 +22,12 @@ int main() {
     parsefen(start_position);
     printboard();
 
-    int start = get_time_ms();
+    int move = uci_parse_move("e2e4");
 
-    printf("Nodes: %ld\n", Perft(2));
-
-    printf("Time: %dms\n", get_time_ms() - start);
-    getchar();
+    if (move) {
+        make_move(move, all_moves);
+        printboard();
+    } else {
+        printf("Illegal move\n");
+    }
 }
