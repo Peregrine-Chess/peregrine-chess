@@ -71,7 +71,6 @@ void uci_parse_position(char *pos) {
             current_char ++;
         }
     }
-    printboard();
 }
 
 void uci_parse_go(char *command) {
@@ -84,7 +83,14 @@ void uci_parse_go(char *command) {
         depth = 6;
     }
 
-    printf("depth: %d\n", depth);
+    int search = 0; 
+
+    int temp_side = side;
+    do {
+        side = temp_side;
+        search = search_position(depth);
+    } while (search != 1);
+    (temp_side == WHITE) ? (side = BLACK) : (side = WHITE);
 }
 
 void uci_identify() {
@@ -98,8 +104,6 @@ void uci_loop() {
     setbuf(stdout, NULL);
 
     char input[2000];
-
-    uci_identify();
 
     while(1) {
         memset(input, 0, sizeof(input));
@@ -116,6 +120,11 @@ void uci_loop() {
             uci_parse_position("position startpos");
         } else if (strncmp(input, "go", 2) == 0) {
             uci_parse_go(input);
+            printboard();
+        } else if (strncmp(input, "quit", 4) == 0) {
+            break;
+        } else if (strncmp(input, "uci", 3) == 0) {
+            uci_identify();
         }
     }
 }

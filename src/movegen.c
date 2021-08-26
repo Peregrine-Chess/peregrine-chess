@@ -67,14 +67,14 @@ void gen_moves(moves *move_list) {
             if (piece == K) {
                 if (castle & WK) {
                     if (!get_bit(occupancies[BOTH], f1) && !get_bit(occupancies[BOTH], g1)) {
-                        if (!is_square_attacked(f1, BLACK) && !is_square_attacked(g1, BLACK))
+                        if (!is_square_attacked(e1, BLACK) && !is_square_attacked(f1, BLACK))
                             add_move(move_list, encode_move(e1, g1, piece, 0, 0, 0, 0, 1));
                     }
                 }
                 
                 if (castle & WQ) {
-                    if (!get_bit(occupancies[BOTH], d1) && !get_bit(occupancies[BOTH], c1)) {
-                        if (!is_square_attacked(d1, BLACK) && !is_square_attacked(c1, BLACK))
+                    if (!get_bit(occupancies[BOTH], d1) && !get_bit(occupancies[BOTH], c1) && !get_bit(occupancies[BOTH], b1)) {
+                        if (!is_square_attacked(e1, BLACK) && !is_square_attacked(d1, BLACK))
                             add_move(move_list, encode_move(e1, c1, piece, 0, 0, 0, 0, 1));
                     }
                 }
@@ -132,14 +132,14 @@ void gen_moves(moves *move_list) {
             if (piece == k) {
                 if (castle & BK) {
                     if (!get_bit(occupancies[BOTH], f8) && !get_bit(occupancies[BOTH], g8)) {
-                        if (!is_square_attacked(f8, WHITE) && !is_square_attacked(g8, WHITE))
+                        if (!is_square_attacked(e8, WHITE) && !is_square_attacked(f8, WHITE))
                             add_move(move_list, encode_move(e8, g8, piece, 0, 0, 0, 0, 1));
                     }
                 }
                 
                 if (castle & BQ) {
-                    if (!get_bit(occupancies[BOTH], d8) && !get_bit(occupancies[BOTH], c8)) { 
-                        if (!is_square_attacked(d8, WHITE) && !is_square_attacked(c8, WHITE))
+                    if (!get_bit(occupancies[BOTH], d8) && !get_bit(occupancies[BOTH], c8) && !get_bit(occupancies[BOTH], b8)) { 
+                        if (!is_square_attacked(e8, WHITE) && !is_square_attacked(d8, WHITE))
                             add_move(move_list, encode_move(e8, c8, piece, 0, 0, 0, 0, 1));
                     }
                 }

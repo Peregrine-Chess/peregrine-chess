@@ -150,7 +150,7 @@ int make_move(int move, int move_flag) {
 
         side ^= 1;
 
-        if (is_square_attacked((side == WHITE) ? get_least_significant_first_bit(bitboards[k]) : get_least_significant_first_bit(bitboards[K]), side)) {
+        if (is_square_attacked(((side == WHITE) ? get_least_significant_first_bit(bitboards[k]) : get_least_significant_first_bit(bitboards[K])), side)) {
             restore_board();
             return 0;
         } else {
