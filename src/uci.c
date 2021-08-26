@@ -71,6 +71,7 @@ void uci_parse_position(char *pos) {
             current_char ++;
         }
     }
+    printboard();
 }
 
 void uci_parse_go(char *command) {
@@ -84,4 +85,37 @@ void uci_parse_go(char *command) {
     }
 
     printf("depth: %d\n", depth);
+}
+
+void uci_identify() {
+    printf("id name CCE 0.0.1\n");
+    printf("id author aa2006 & segfaultdev\n");
+    printf("uciok\n");
+}
+
+void uci_loop() {
+    setbuf(stdin, NULL);
+    setbuf(stdout, NULL);
+
+    char input[2000];
+
+    uci_identify();
+
+    while(1) {
+        memset(input, 0, sizeof(input));
+        fflush(stdout);
+
+        if (!fgets(input, 2000, stdin) || input[0] == '\n') {
+            continue;
+        } else if (strncmp(input, "isready", 7) == 0) {
+            printf("readyok\n");
+            continue;
+        } else if (strncmp(input, "position", 8) == 0) {
+            uci_parse_position(input);
+        } else if (strncmp(input, "ucinewgame", 10) == 0) {
+            uci_parse_position("position startpos");
+        } else if (strncmp(input, "go", 2) == 0) {
+            uci_parse_go(input);
+        }
+    }
 }
