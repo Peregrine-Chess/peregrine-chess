@@ -12,5 +12,6 @@
 
 int uci_parse_move(char *move_string);
 void uci_parse_position(char *pos);
+void uci_parse_go(char *command);
 
 #endif

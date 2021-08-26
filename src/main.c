@@ -21,4 +21,5 @@ int main() {
 
     uci_parse_position("position startpos moves e2e4 e7e5");
     printboard();
+    uci_parse_go("go depth 4");
 }
