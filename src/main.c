@@ -18,16 +18,7 @@
 int main() {
     // init EVERYTHING
     init_all();
-    
-    parsefen(start_position);
+
+    uci_parse_position("position startpos moves e2e4 e7e5");
     printboard();
-
-    int move = uci_parse_move("e2e4");
-
-    if (move) {
-        make_move(move, all_moves);
-        printboard();
-    } else {
-        printf("Illegal move\n");
-    }
 }

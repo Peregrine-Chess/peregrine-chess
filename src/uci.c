@@ -34,3 +34,41 @@ int uci_parse_move(char *move_string) {
     }
     return 0;
 }
+
+void uci_parse_position(char *pos) {
+    pos += 9;
+
+    char *current_char = pos;
+
+    if (strcmp(pos, "startpos") == 0) {
+        parsefen(start_position);
+    } else {
+        current_char = strstr(pos, "fen");
+
+        if (current_char == NULL) {
+            parsefen(start_position);
+        } else {
+            current_char += 4;
+
+            parsefen(current_char);
+        }
+    }
+
+    current_char = strstr(pos, "moves");
+
+    if (current_char != NULL) {
+        current_char += 6;
+
+        while (*current_char) {
+            int move = uci_parse_move(current_char);
+
+            if (move == 0) break;
+
+            make_move(move, all_moves);
+
+            while (*current_char && *current_char != ' ') current_char ++;
+
+            current_char ++;
+        }
+    }
+}
