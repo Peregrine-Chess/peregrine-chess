@@ -12,6 +12,14 @@
 #include <stdlib.h>
 #include <bitboard.h>
 
+#define MAX(x, y) (((x) > (y)) ? (x) : (y))
+#define MIN(x, y) (((x) < (y)) ? (x) : (y))
+
+extern int piece_value[12];
+
+int eval_position();
+int minimax(int depth, int is_max, int alpha, int beta);
+int minimax_root(int depth, int is_max);
 int search_position(int depth);
 
 #endif

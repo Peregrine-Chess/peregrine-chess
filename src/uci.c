@@ -80,7 +80,7 @@ void uci_parse_go(char *command) {
     if ((current_depth = strstr(command, "depth"))) {
         depth = atoi(current_depth + 6);
     } else {
-        depth = 6;
+        depth = 3;
     }
 
     int search = 0; 
@@ -120,7 +120,6 @@ void uci_loop() {
             uci_parse_position("position startpos");
         } else if (strncmp(input, "go", 2) == 0) {
             uci_parse_go(input);
-            printboard();
         } else if (strncmp(input, "quit", 4) == 0) {
             break;
         } else if (strncmp(input, "uci", 3) == 0) {
