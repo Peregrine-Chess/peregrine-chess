@@ -25,7 +25,7 @@ make
 ```
 
 ## Build Instructions
-#### Note: This project doesn't do anything yet.
+
 ```bash
 # Clone the repo
 git clone https://github.com/cheese-chess/cheese_chess
