@@ -11,6 +11,14 @@ A UCI (not yet) chess engine written in C.
 <br>
 Join our [Discord server](https://discord.gg/FBzkBQhz3A).
 
+## Installing
+
+### Windows and MacOS
+Coming Soon
+
+### Linux
+Grab the latest binary from the [releases](https://github.com/cheese-chess/cheese_chess/releases) page and copy it to `/usr/bin`, or [build from source](build-instructions)
+
 ## Dependencies
 ```
 make
