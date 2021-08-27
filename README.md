@@ -17,7 +17,7 @@ Join our [Discord server](https://discord.gg/FBzkBQhz3A).
 Coming Soon
 
 ### Linux
-Grab the latest binary from the [releases](https://github.com/cheese-chess/cheese_chess/releases) page and copy it to `/usr/bin`, or [build from source](build-instructions)
+Grab the latest binary from the [releases](https://github.com/cheese-chess/cheese_chess/releases) page and copy it to `/usr/bin`, or [build from source](#build-instructions)
 
 ## Dependencies
 ```
