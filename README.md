@@ -7,9 +7,10 @@
 
 </div>
 
-A UCI (not yet) chess engine written in C.
+A UCI chess engine written in C.
 <br>
-Join our [Discord server](https://discord.gg/FBzkBQhz3A).
+> Join our [Discord server](https://discord.gg/FBzkBQhz3A).<br>
+> Challenge CCE on [Lichess](https://https://lichess.org/@/Cheese_Chess_Engine).
 
 ## Installing
 
