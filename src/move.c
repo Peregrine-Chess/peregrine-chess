@@ -50,9 +50,30 @@ void print_move_list(moves *move_list) {
     printf("\n\n    Total number of moves: %d\n\n", move_list->count);
 }
 
-void add_move(moves *move_list, int move) {
-    move_list->moves[move_list->count] = move;
+int is_in_check() {
+    // Check if king is in check
+    if (side == WHITE) {
+        if (is_square_attacked(get_least_significant_first_bit(bitboards[K]), BLACK)) {
+            return 1;
+        } else return 0;
+    } else {
+        if (is_square_attacked(get_least_significant_first_bit(bitboards[k]), WHITE)) {
+            return 1;
+        } else return 0;
+    }
+}
 
+void add_move(moves *move_list, int move) {
+    copy_board();
+    int temp_side = side;
+    int value = make_move(move, all_moves);
+    side = temp_side;
+    int value2 = is_in_check();
+    restore_board();
+    if (value == 0 || value2 == 1) {
+        return;
+    } 
+    move_list->moves[move_list->count] = move;
     move_list->count ++;
 }
 
@@ -150,12 +171,7 @@ int make_move(int move, int move_flag) {
 
         side ^= 1;
 
-        if (is_square_attacked(((side == WHITE) ? get_least_significant_first_bit(bitboards[k]) : get_least_significant_first_bit(bitboards[K])), side)) {
-            restore_board();
-            return 0;
-        } else {
-            return 1;
-        }
+        return 1;
     } else {
         if (get_move_capture(move))
             make_move(move, all_moves);

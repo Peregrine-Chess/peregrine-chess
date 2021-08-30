@@ -80,7 +80,7 @@ void uci_parse_go(char *command) {
     if ((current_depth = strstr(command, "depth"))) {
         depth = atoi(current_depth + 6);
     } else {
-        depth = 3;
+        depth = 6;
     }
 
     int search = 0; 

@@ -9,7 +9,6 @@ NC=\033[0m
 CFLAGS := \
 	-Isrc/include \
 	-Wall \
-	-Werror\
 	-Wextra \
 	-Wno-unused-value\
 	-Wno-unused-parameter\

@@ -36,6 +36,7 @@ enum { all_moves, only_captures };
 extern char promoted_pieces[];
 extern const int castling_rights[];
 
+int is_in_check();
 void print_move(int move);
 void print_move_list(moves *move_list);
 void add_move(moves *move_list, int move);
