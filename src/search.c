@@ -4,40 +4,25 @@
 
 #include <search.h>
 
-int piece_value[12] = {
-    100,
-    320,
-    350,
-    500,
-    900,
-    100000,
-    -100,
-    -320,
-    -350,
-    -500,
-    -900,
-    -100000
-};
-
 int eval_position() {
     int result = 0;
 
     for (int j = 0; j < 64; j ++) {
         if (get_bit(occupancies[BOTH], j)) {
             if (get_bit(occupancies[WHITE], j)) {
-                if (get_bit(bitboards[P], j)) result += piece_value[0];
-                else if (get_bit(bitboards[N], j)) result += piece_value[1];
-                else if (get_bit(bitboards[B], j)) result += piece_value[2];
-                else if (get_bit(bitboards[R], j)) result += piece_value[3];
-                else if (get_bit(bitboards[Q], j)) result += piece_value[4];
-                else result += piece_value[5];
+                if (get_bit(bitboards[P], j)) result += 100;
+                else if (get_bit(bitboards[N], j)) result += 320;
+                else if (get_bit(bitboards[B], j)) result += 330;
+                else if (get_bit(bitboards[R], j)) result += 500;
+                else if (get_bit(bitboards[Q], j)) result += 900;
+                else result += 1316134912;
             } else {
-                if (get_bit(bitboards[p], j)) result -= piece_value[6];
-                else if (get_bit(bitboards[n], j)) result -= piece_value[7];
-                else if (get_bit(bitboards[b], j)) result -= piece_value[8];
-                else if (get_bit(bitboards[r], j)) result -= piece_value[9];
-                else if (get_bit(bitboards[q], j)) result -= piece_value[10];
-                else result -= piece_value[11];
+                if (get_bit(bitboards[p], j)) result -= 100;
+                else if (get_bit(bitboards[n], j)) result -= 320;
+                else if (get_bit(bitboards[b], j)) result -= 330;
+                else if (get_bit(bitboards[r], j)) result -= 500;
+                else if (get_bit(bitboards[q], j)) result -= 900;
+                else result -= 1316134912;
             }
         }
     }
@@ -61,7 +46,8 @@ int minimax(int depth, int is_max, int alpha, int beta) {
                 score, 
                 minimax(depth - 1, ((is_max == 1) ? 0 : 1), alpha, beta)
             );
-            restore_board();    
+            restore_board();   
+            fprintf(stderr, "depth %d, node %d, score %d\n", depth, i, score); 
             alpha = MAX(alpha, score);
             if (beta <= alpha) {
                 return score;
@@ -79,6 +65,7 @@ int minimax(int depth, int is_max, int alpha, int beta) {
                 minimax(depth - 1, ((is_max == 1) ? 0 : 1), alpha, beta)
             );
             restore_board();    
+            fprintf(stderr, "depth %d, node %d, score %d\n", depth, i, score);
             beta = MIN(beta, score);        
             if (beta <= alpha)
                 return score;
@@ -112,7 +99,7 @@ int minimax_root(int depth, int is_max) {
 }
 
 int search_position(int depth) {
-    int move = minimax_root(2, ((side == WHITE) ? 1 : 0));
+    int move = minimax_root(depth, ((side == WHITE) ? 1 : 0));
     int move_made = make_move(move, all_moves);
     if (move_made) {
         const char *start_square = square_to_coords[get_move_start(move)];

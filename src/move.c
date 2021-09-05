@@ -33,19 +33,20 @@ void print_move(int move) {
 }
 
 void print_move_list(moves *move_list) {
-    printf("\n    move    piece   capture   double    enpass    castling\n\n");
+    printf("\n    move    piece   capture   double    enpass    castling    promotion\n\n");
     
     for (int move_count = 0; move_count < move_list->count; move_count++) {
         int move = move_list->moves[move_count];
         
-        printf("    %s%s%c   %c       %d         %d         %d         %d\n", square_to_coords[get_move_start(move)],
+        printf("    %s%s%c   %c       %d         %d         %d         %d         %d\n", square_to_coords[get_move_start(move)],
                                                                                 square_to_coords[get_move_target(move)],
                                                                                 promoted_pieces[get_move_promoted(move)],
                                                                                 ascii_pieces[get_move_piece(move)],
                                                                                 get_move_capture(move) ? 1 : 0,
                                                                                 get_move_double(move) ? 1 : 0,
                                                                                 get_move_enpassant(move) ? 1 : 0,
-                                                                                get_move_castling(move) ? 1 : 0);
+                                                                                get_move_castling(move) ? 1 : 0,
+                                                                                get_move_promoted(move) ? 1 : 0);
     }
     printf("\n\n    Total number of moves: %d\n\n", move_list->count);
 }
@@ -169,7 +170,9 @@ int make_move(int move, int move_flag) {
         occupancies[BOTH] |= occupancies[WHITE];
         occupancies[BOTH] |= occupancies[BLACK];
 
+        if (!promoted) {
         side ^= 1;
+        }
 
         return 1;
     } else {
