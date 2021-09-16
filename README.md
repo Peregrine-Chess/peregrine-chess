@@ -1,7 +1,7 @@
 <div align="center">
     <img src="./assets/cheese_nobg.png" width=150px><br>
-    <img src="https://img.shields.io/github/commit-activity/w/cheese-chess/cheese_c?style=flat-square">
-    <img src="https://img.shields.io/github/license/cheese-chess/cheese_c?style=flat-square">
+    <img src="https://img.shields.io/github/commit-activity/w/aa2006/peregrine-chess?style=flat-square">
+    <img src="https://img.shields.io/github/license/aa2006/peregrine-chess?style=flat-square">
     <img src="https://img.shields.io/discord/872146521183903804?style=flat-square">
     <h1>Cheese Chess Engine (CCE)</h1>
 
@@ -10,7 +10,7 @@
 A UCI chess engine written in C.
 <br>
 > Join our [Discord server](https://discord.gg/FBzkBQhz3A).<br>
-> Challenge CCE on [Lichess](https://https://lichess.org/@/Cheese_Chess_Engine).
+> Challenge Peregrine on [Lichess](https://lichess.org/@/PeregrineEngine).
 
 ## Installing
 
@@ -18,7 +18,7 @@ A UCI chess engine written in C.
 Coming Soon
 
 ### Linux
-Grab the latest binary from the [releases](https://github.com/cheese-chess/cheese_chess/releases) page and copy it to `/usr/bin`, or [build from source](#build-instructions)
+Grab the latest binary from the [releases](https://github.com/aa2006/Perigrine/releases) page and copy it to `/usr/bin`, or [build from source](#build-instructions)
 
 ## Dependencies
 ```
@@ -29,9 +29,9 @@ make
 
 ```bash
 # Clone the repo
-git clone https://github.com/cheese-chess/cheese_chess
+https://github.com/aa2006/peregrine-chess
 # Enter the repo directory
-cd cheese_c
+cd peregrine-chess
 # Run make to compile
 make
 # To run it...
