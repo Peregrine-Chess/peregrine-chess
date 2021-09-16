@@ -18,7 +18,7 @@ CFLAGS := \
 CFILES := $(shell find src/ -name '*.c')
 OFILES := $(CFILES:.c=.o)
 
-TARGET = cheese
+TARGET = peregrin
 
 all: welcome clean compile
 
@@ -29,7 +29,7 @@ welcome:
 	@ echo " \      /"
 	@ echo "  \____/"
 	@ echo "  (____)"
-	@ echo "   |  |  C H E E S E"
+	@ echo "   |  |  P E R E G R I N"
 	@ echo "   |__|  C H E S S"
 	@ echo "  /    \\"
 	@ echo " (______)"
@@ -53,9 +53,9 @@ clean:
 	@ rm -rf $(OFILES) $(TARGET)
 
 run:
-	@ ./cheese
+	@ ./peregrin
 
 install:
 	@ echo "Installing..."
-	@ cp ./cheese /usr/bin
+	@ cp ./peregrin /usr/bin
 	@ echo "Done!"
