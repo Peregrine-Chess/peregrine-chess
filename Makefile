@@ -29,7 +29,7 @@ welcome:
 	@ echo " \      /"
 	@ echo "  \____/"
 	@ echo "  (____)"
-	@ echo "   |  |  P E R E G R I N"
+	@ echo "   |  |  P E R E G R I N E"
 	@ echo "   |__|  C H E S S"
 	@ echo "  /    \\"
 	@ echo " (______)"
