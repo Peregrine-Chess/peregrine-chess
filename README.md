@@ -1,9 +1,8 @@
 <div align="center">
-    <img src="./assets/cheese_nobg.png" width=150px><br>
     <img src="https://img.shields.io/github/commit-activity/w/aa2006/peregrine-chess?style=flat-square">
     <img src="https://img.shields.io/github/license/aa2006/peregrine-chess?style=flat-square">
     <img src="https://img.shields.io/discord/872146521183903804?style=flat-square">
-    <h1>Cheese Chess Engine (CCE)</h1>
+    <h1>Peregrine Chess Engine (PCE)</h1>
 
 </div>
 
