@@ -1,4 +1,5 @@
 <div align="center">
+    <img src="./art/falcon-padding-big.png"><br>
     <img src="https://img.shields.io/github/commit-activity/w/aa2006/peregrine-chess?style=flat-square">
     <img src="https://img.shields.io/github/license/aa2006/peregrine-chess?style=flat-square">
     <img src="https://img.shields.io/discord/872146521183903804?style=flat-square">
