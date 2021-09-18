@@ -18,7 +18,7 @@ CFLAGS := \
 CFILES := $(shell find src/ -name '*.c')
 OFILES := $(CFILES:.c=.o)
 
-TARGET = peregrin
+TARGET = peregrine
 
 all: welcome clean compile
 
@@ -57,5 +57,5 @@ run:
 
 install:
 	@ echo "Installing..."
-	@ cp ./peregrin /usr/bin
+	@ cp ./peregrine /usr/bin
 	@ echo "Done!"
