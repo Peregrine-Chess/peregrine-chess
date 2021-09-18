@@ -4,6 +4,7 @@
 
 
 #include <bitboard.h>
+#include <board.h>
 
 int main(void) {
     // This stuff is just for testing purposes
@@ -17,4 +18,13 @@ int main(void) {
 
     printf("\n\n");
     printf("Number of 'on' bits: %d\n", pop_count(bitboard));
+
+    set_bit(bitboards[p], a2);
+
+    printf("\n\n");
+
+    side = WHITE;
+    print_board();
+
+    print_bitboard(bitboards[p]);
 }
