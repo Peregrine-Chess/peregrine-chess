@@ -2,15 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
+#ifndef __ATTACKS_H__
+#define __ATTACKS_H__
+
 #include <bitboard.h>
 #include <board.h>
-#include <attacks.h>
 
-int main(void) {
-    // This stuff is just for testing purposes
+extern const Bitboard not_a_file;
+extern const Bitboard not_h_file;
+extern const Bitboard not_hg_file; 
+extern const Bitboard not_ab_file;
 
-    print_bitboard(not_a_file);
-    print_bitboard(not_ab_file);
-    print_bitboard(not_h_file);
-    print_bitboard(not_hg_file);
-}
+#endif

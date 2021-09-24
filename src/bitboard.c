@@ -35,9 +35,9 @@ void print_bitboard(Bitboard bitboard) {
         printf("  %d  ", 8 - rank);
       }
 
-      printf(" %d ", get_bit(bitboard, square) ? 1 : 0);
+      printf(" %d", get_bit(bitboard, square) ? 1 : 0);
     }
     printf("\n");
   }
-  printf("\n      a  b  c  d  e  f  g  h\n");
+  printf("\n      a b c d e f g h\n");
 }
