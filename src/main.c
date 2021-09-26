@@ -9,8 +9,8 @@
 int main(void) {
     // This stuff is just for testing purposes
 
-    print_bitboard(not_a_file);
-    print_bitboard(not_ab_file);
-    print_bitboard(not_h_file);
-    print_bitboard(not_hg_file);
+    print_bitboard(get_knight_attacks(e4));
+    print_bitboard(get_knight_attacks(a6));
+    print_bitboard(get_knight_attacks(h2));
+    print_bitboard(get_knight_attacks(d8));
 }

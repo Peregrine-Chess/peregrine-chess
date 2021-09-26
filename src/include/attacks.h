@@ -13,4 +13,7 @@ extern const Bitboard not_h_file;
 extern const Bitboard not_hg_file; 
 extern const Bitboard not_ab_file;
 
+Bitboard get_pawn_attacks(int square, int color);
+Bitboard get_knight_attacks(int square);
+
 #endif
