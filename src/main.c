@@ -11,8 +11,8 @@ int main(void) {
     // This stuff is just for testing purposes
     init_all();
 
-    Bitboard bitboard = 0ULL;
+    parse_fen(start_position);
 
-    set_bit(bitboard, c4);
-    print_bitboard(get_rook_attacks(e4, bitboard));
+    print_board();
+    print_attacked_squares(BLACK);
 }

@@ -25,6 +25,10 @@ Bitboard get_knight_attacks(int square);
 Bitboard get_king_attacks(int square);
 Bitboard get_bishop_attacks(int square, Bitboard block);
 Bitboard get_rook_attacks(int square, Bitboard block);
+Bitboard get_queen_attacks(int square, Bitboard block);
+
+int is_square_attacked(int square, int color);
+void print_attacked_squares(int color);
 
 void init_all();
 
