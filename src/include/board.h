@@ -15,6 +15,9 @@
 #define killer_position "rnbqkb1r/pp1p1pPp/8/2p1pP2/1P1P4/3P3P/P1P1P3/RNBQKBNR w KQkq e6 0 1"
 #define cmk_position "r2q1rk1/ppp2ppp/2n1bn2/2b1p3/3pP3/3P1NPP/PPP1NPB1/R1BQ1RK1 b - - 0 9 "
 
+#define rank(square) (square / 8)
+#define file(square) (square % 8)
+
 // Piece bitboads, 12 in total (6 pieces for each color)
 extern Bitboard bitboards[12];
 // Occupancy bitboards, 3 in total, one for each color, and one for both.

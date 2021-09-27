@@ -5,12 +5,14 @@
 #include <bitboard.h>
 #include <board.h>
 #include <attacks.h>
+#include <log.h>
 
 int main(void) {
     // This stuff is just for testing purposes
+    init_all();
 
-    print_bitboard(get_knight_attacks(e4));
-    print_bitboard(get_knight_attacks(a6));
-    print_bitboard(get_knight_attacks(h2));
-    print_bitboard(get_knight_attacks(d8));
+    Bitboard bitboard = 0ULL;
+
+    set_bit(bitboard, c4);
+    print_bitboard(get_rook_attacks(e4, bitboard));
 }
