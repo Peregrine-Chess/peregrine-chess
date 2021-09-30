@@ -6,13 +6,17 @@
 #include <board.h>
 #include <attacks.h>
 #include <log.h>
+#include <move.h>
+#include <movegen.h>
 
 int main(void) {
-    // This stuff is just for testing purposes
-    init_all();
+  // This stuff is just for testing purposes
+  init_all();
 
-    parse_fen(start_position);
+  parse_fen(start_position);
+  moves move_list[1];
 
-    print_board();
-    print_attacked_squares(BLACK);
+  gen_moves(move_list);
+
+  print_move_list(move_list);
 }

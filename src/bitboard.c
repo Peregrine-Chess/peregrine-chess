@@ -41,3 +41,12 @@ void print_bitboard(Bitboard bitboard) {
   }
   printf("\n      a b c d e f g h\n");
 }
+
+// Get least significant bit index (lsb)
+int get_lsb_index(Bitboard bitboard) {
+  if (bitboard) {
+    return pop_count((bitboard & -bitboard) - 1);
+  } else {
+    return -1;
+  }
+}

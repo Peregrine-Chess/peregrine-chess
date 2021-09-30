@@ -29,5 +29,6 @@ enum {
 
 int pop_count(Bitboard bitboard);
 void print_bitboard(Bitboard bitboard);
+int get_lsb_index(Bitboard bitboard);
 
 #endif

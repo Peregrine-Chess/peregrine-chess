@@ -29,6 +29,10 @@ extern int en_passant;
 // Castling rights
 extern int castle;
 
+// Copies for board preservation 
+extern Bitboard bitboards_copy[12];
+extern Bitboard occupancies_copy[3];
+extern int side_copy, en_passant_copy, castle_copy;
 
 enum { WK = 1, WQ = 2, BK = 3, BQ = 4 };
 enum { P, N, B, R, Q, K, p, n, b, r, q, k };
@@ -39,5 +43,8 @@ extern int char_pieces[];
 
 void print_board();
 void parse_fen(char *fen);
+
+void copy_board();
+void restore_board();
 
 #endif
