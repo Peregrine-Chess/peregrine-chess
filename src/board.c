@@ -145,6 +145,27 @@ int parse_fen(char *fen, BOARD *pos) {
   return 0;
 }
 
+void update_list_material(BOARD *pos) {
+  for (int i = 0; i < BOARD_NUM_SQUARES; i ++) {
+    int sq = i;
+    int piece = pos->pieces[i];
+    if (piece != OFFBOARD && piece != EMPTY) {
+      int color = piece_color[piece];
+      if (piece_big[piece] == TRUE) pos->big_pieces[color] ++;
+      if (piece_minor[piece] == TRUE) pos -> minor_pieces[color] ++;
+      if (piece_major[piece] == TRUE) pos -> major_pieces[color] ++;
+    
+      pos->material[color] += piece_value[piece];
+
+      pos->piece_list[piece][pos->piece_num[piece]] = sq;
+      pos->piece_num[piece] ++;
+
+      if (piece == wK) pos->king_sq[WHITE] = sq;
+      if (piece == bK) pos->king_sq[BLACK] = sq;
+    }
+  }
+}
+
 void print_board(const BOARD *pos) {
   printf("\nGame Board:\n\n");
 

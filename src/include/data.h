@@ -5,9 +5,17 @@
 #ifndef __DATA_H__
 #define __DATA_H__
 
+#include <board.h>
+
 extern char piece_char[];
 extern char rank_char[];
 extern char side_char[];
 extern char file_char[];
+
+extern int piece_big[13];
+extern int piece_major[13];
+extern int piece_minor[13];
+extern int piece_value[13];
+extern int piece_color[13];
 
 #endif

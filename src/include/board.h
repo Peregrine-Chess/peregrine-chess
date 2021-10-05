@@ -80,9 +80,10 @@ typedef struct BOARD {
   Bitboard pos_key;
 
   int piece_num[13];
-  int big_pieces[3];
-  int major_pieces[3];
-  int minor_pieces[3];
+  int big_pieces[2];
+  int major_pieces[2];
+  int minor_pieces[2];
+  int material[2];
 
   UNDO history[MAX_GAME_MOVES];
 
@@ -94,6 +95,8 @@ extern int sq_64_sq_120[64];
 
 void reset_board(BOARD *pos);
 int parse_fen(char *fen, BOARD *pos);
+
+void update_list_material(BOARD *pos);
 
 void print_board(const BOARD *pos);
 
