@@ -93,6 +93,9 @@ typedef struct BOARD {
 extern int sq_120_sq_64[BOARD_NUM_SQUARES];
 extern int sq_64_sq_120[64];
 
+extern int files_board[BOARD_NUM_SQUARES];
+extern int ranks_board[BOARD_NUM_SQUARES];
+
 void reset_board(BOARD *pos);
 int parse_fen(char *fen, BOARD *pos);
 

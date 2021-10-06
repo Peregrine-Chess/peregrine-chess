@@ -9,6 +9,9 @@
 int sq_120_sq_64[BOARD_NUM_SQUARES];
 int sq_64_sq_120[64];
 
+int files_board[BOARD_NUM_SQUARES];
+int ranks_board[BOARD_NUM_SQUARES];
+
 void reset_board(BOARD *pos) {
   for (int i = 0; i < BOARD_NUM_SQUARES; i ++) {
     pos->pieces[i] = EMPTY;
@@ -142,6 +145,8 @@ int parse_fen(char *fen, BOARD *pos) {
 
   pos->pos_key = generate_pos_key(pos);
 
+  update_list_material(pos);
+
   return 0;
 }
 
@@ -162,6 +167,14 @@ void update_list_material(BOARD *pos) {
 
       if (piece == wK) pos->king_sq[WHITE] = sq;
       if (piece == bK) pos->king_sq[BLACK] = sq;
+
+      if (piece == wP) {
+        SET_BIT_MASK(pos->pawns[WHITE], sq_120_sq_64[sq]);
+        SET_BIT_MASK(pos->pawns[BOTH], sq_120_sq_64[sq]);
+      } else if (piece == bP) {
+        SET_BIT_MASK(pos->pawns[BLACK], sq_120_sq_64[sq]);
+        SET_BIT_MASK(pos->pawns[BOTH], sq_120_sq_64[sq]);
+      }
     }
   }
 }

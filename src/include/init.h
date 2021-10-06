@@ -12,6 +12,7 @@
 void logger(int status, char *message);
 
 int init_hash_keys();
+int init_files_ranks_board();
 int init_bit_mask();
 int init_sq_120_sq_64();
 

@@ -18,6 +18,26 @@ void logger(int status, char *message) {
   }
 }
 
+int init_files_ranks_board() {
+  int file = FILE_A, rank = RANK_1;
+  int sq = a1;
+
+  for (int i = 0; i < BOARD_NUM_SQUARES; i ++) {
+    files_board[i] = OFFBOARD;
+    ranks_board[i] = OFFBOARD;
+  }
+
+  for (rank = RANK_1; rank <= RANK_8; rank ++) {
+    for (file = FILE_A; file <= FILE_H; file ++) {
+      sq = INDEX(file, rank);
+      files_board[sq] = file;
+      ranks_board[sq] = rank;
+    }
+  }
+
+  return 1;
+}
+
 int init_hash_keys() {
   for (int i = 0; i < 13; i ++) {
     for (int j = 0; j < 120; j ++) {
@@ -74,4 +94,5 @@ void init_all() {
   logger(init_sq_120_sq_64(), "Initializing square indexes...");
   logger(init_bit_mask(), "Initializing bit mask...");
   logger(init_hash_keys(), "Initializing hash keys...");
+  logger(init_files_ranks_board(), "Initializing files and ranks on board...");
 }
