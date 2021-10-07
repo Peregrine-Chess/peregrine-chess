@@ -15,12 +15,5 @@ int main(void) {
   parse_fen(KILLER_POSITION, board);
   print_board(board);
 
-  printf("White pawns:\n");
-  print_bitboard(board->pawns[WHITE]);
-
-  printf("Black pawns:\n");
-  print_bitboard(board->pawns[BLACK]);
-
-  printf("All pawns:\n");
-  print_bitboard(board->pawns[BOTH]);
+  ASSERT(check_board(board));
 }

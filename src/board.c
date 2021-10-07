@@ -179,6 +179,83 @@ void update_list_material(BOARD *pos) {
   }
 }
 
+int check_board(BOARD *pos) {
+  int t_piece_num[13] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  int t_big_pieces[2] = { 0, 0 };
+  int t_major_pieces[2] = { 0, 0 };
+  int t_minor_pieces[2] = { 0, 0 };
+  int t_material[2] = { 0, 0 };
+
+  int sq64, t_piece, t_pce_num, sq120, color;
+
+  Bitboard t_pawns[3] = { 0ULL, 0ULL, 0ULL };
+
+  t_pawns[WHITE] = pos->pawns[WHITE];
+  t_pawns[BLACK] = pos->pawns[BLACK];
+  t_pawns[BOTH] = pos->pawns[BOTH];
+
+  for (t_piece = wP; t_piece < bK; t_piece ++) {
+    for (t_pce_num = 0; t_pce_num < pos->piece_num[t_piece]; t_pce_num ++) {
+      sq120 = pos->piece_list[t_piece][t_pce_num];
+      ASSERT(pos->pieces[sq120] == t_piece);
+    }
+  }
+
+  for (sq64 = 0; sq64 < 64; sq64 ++) {
+    sq120 = sq_64_sq_120[sq64];
+    t_piece = pos->pieces[sq120];
+    t_piece_num[t_piece] ++;
+    color = piece_color[t_piece];
+    if (piece_big[t_piece] == TRUE) t_big_pieces[color] ++;
+    if (piece_minor[t_piece] == TRUE) t_minor_pieces[color] ++;
+    if (piece_major[t_piece] == TRUE) t_major_pieces[color] ++;
+
+    t_material[color] += piece_value[t_piece];
+  }
+
+  for (t_piece = wP; t_piece <= bK; t_piece ++) {
+    ASSERT(t_piece_num[t_piece] == pos->piece_num[t_piece]);
+  }
+
+  int pawn_count = pop_count(t_pawns[WHITE]);
+  ASSERT(pawn_count == pos->piece_num[wP]);
+  pawn_count = pop_count(t_pawns[BLACK]);
+  ASSERT(pawn_count == pos->piece_num[bP]);
+  pawn_count = pop_count(t_pawns[BOTH]);
+  ASSERT(pawn_count == (pos->piece_num[bP] + pos->piece_num[wP]));
+
+  while (t_pawns[WHITE]) {
+    sq64 = pop_lsb(&t_pawns[WHITE]);
+    ASSERT(pos->pieces[sq_64_sq_120[sq64]] == wP);
+  }
+
+  while (t_pawns[BLACK]) {
+    sq64 = pop_lsb(&t_pawns[BLACK]);
+    ASSERT(pos->pieces[sq_64_sq_120[sq64]] == bP);
+  }
+
+  while (t_pawns[BOTH]) {
+    sq64 = pop_lsb(&t_pawns[BOTH]);
+    ASSERT((pos->pieces[sq_64_sq_120[sq64]] == bP) || (pos->pieces[sq_64_sq_120[sq64]] == wP));
+  }
+
+  ASSERT(t_material[WHITE] == pos->material[WHITE] && t_material[BLACK] == pos->material[BLACK]);
+  ASSERT(t_minor_pieces[WHITE] == pos->minor_pieces[WHITE] && t_minor_pieces[BLACK] == pos->minor_pieces[BLACK]);
+  ASSERT(t_major_pieces[WHITE] == pos->major_pieces[WHITE] && t_major_pieces[BLACK] == pos->major_pieces[BLACK]);
+  ASSERT(t_big_pieces[WHITE] == pos->big_pieces[WHITE] && t_big_pieces[BLACK] == pos->big_pieces[BLACK]);
+
+  ASSERT(pos->side == WHITE || pos->side == BLACK);
+  ASSERT(generate_pos_key(pos) == pos->pos_key);
+
+  ASSERT(pos->en_passant == no_sq || (ranks_board[pos->en_passant] == RANK_6 && pos->side == WHITE) 
+        || (ranks_board[pos->en_passant] == RANK_3 && pos->side == BLACK));
+
+  ASSERT(pos->pieces[pos->king_sq[WHITE]]== wK);
+  ASSERT(pos->pieces[pos->king_sq[BLACK]] == bK);
+
+  return TRUE;
+}
+
 void print_board(const BOARD *pos) {
   printf("\nGame Board:\n\n");
 

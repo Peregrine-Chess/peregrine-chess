@@ -101,6 +101,8 @@ int parse_fen(char *fen, BOARD *pos);
 
 void update_list_material(BOARD *pos);
 
+int check_board(BOARD *pos);
+
 void print_board(const BOARD *pos);
 
 #endif
