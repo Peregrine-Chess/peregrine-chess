@@ -6,6 +6,7 @@
 #include <board.h>
 #include <bitboard.h>
 #include <hashkeys.h>
+#include <attacks.h>
 
 int main(void) {
   init_all();
