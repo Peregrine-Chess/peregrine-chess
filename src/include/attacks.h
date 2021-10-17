@@ -9,7 +9,7 @@
 #include <data.h>
 
 #define IS_BISHOP_QUEEN(p) (piece_bishop_queen[p])
-#define IS_ROOK_QUEEN(p) (piece_bishop_queen[p])
+#define IS_ROOK_QUEEN(p) (piece_rook_queen[p])
 #define IS_KING(p) (piece_king[p])
 #define IS_KNIGHT(p) (piece_knight[p])
 

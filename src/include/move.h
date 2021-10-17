@@ -5,8 +5,11 @@
 #ifndef __MOVE_H__
 #define __MOVE_H__
 
-#define FROM_SQ(m) ((m) & 0x3F)
-#define TO_SQ(m) (((m) >> 7) & 0x3F)
+#include <board.h>
+#include <stdio.h>
+
+#define FROM_SQ(m) ((m) & 0x7F)
+#define TO_SQ(m) (((m) >> 7) & 0x7F)
 #define CAPTURED(m) (((m) >> 14) & 0xF)
 #define PROMOTED(m) (((m) >> 20) & 0xF)
 
@@ -21,5 +24,8 @@ typedef struct MOVE {
   int move;
   int score;
 } MOVE;
+
+char *print_square(const int square);
+char *print_move(const int move);
 
 #endif

@@ -12,22 +12,15 @@
 int main(void) {
   init_all();
 
-  BOARD board[1];
-
-  parse_fen(KILLER_POSITION, board);
-  print_board(board);
-
-  ASSERT(check_board(board));
-
   int move = 0;
+  int from = a2, to = h7;
+  int cap = bN, prom = wB;
 
-  int from = 6, to = 12;
-  int cap = wR, prom = bR;
-  move = (from) | (to << 7) | (cap << 14) | (prom << 20);
-  printf("dec:%d\nhex:%X\n", move, move);
+  move = ((from) | (to << 7) | (cap << 14) | (prom << 20));
 
-  printf("from:%d to:%d cap:%d prom:%d\n", FROM_SQ(move), TO_SQ(move), CAPTURED(move), PROMOTED(move));
-  //move |= MFLAGPS;
+  printf("from: %d to: %d capture: %d promotion: %d\n", FROM_SQ(move), TO_SQ(move), CAPTURED(move), PROMOTED(move));
 
-  printf("is pawn start:%s\n", (move & MFLAGPS) ? "YES" : "NO");
+  printf("\nAlgebraic from: %s\n", print_square(from));
+  printf("Algebraic to: %s\n", print_square(to));
+  printf("Algebraic move: %s\n", print_move(move));
 }
