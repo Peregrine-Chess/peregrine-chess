@@ -27,6 +27,7 @@ exit(1); }
 
 #define BOARD_NUM_SQUARES 120
 #define MAX_GAME_MOVES 2048
+#define MAX_POSITION_MOVES 256
 
 #define INDEX(f, r) ((21 + f) + (r * 10))
 #define GET_BIT(bitboard, square) (bitboard & (1ULL << sq_120_sq_64[square]))

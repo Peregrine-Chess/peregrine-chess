@@ -3,6 +3,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #include <attacks.h>
+#include <validate.h>
 
 const int king_direction[8] = { -8, -19, -21, -12, 8, 19, 21, 12 };
 const int rook_direction[4] = { -1, -10, 1, 10 };
@@ -14,7 +15,11 @@ int piece_king[13] =   { FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, 
 int piece_rook_queen[13] = { FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, TRUE, FALSE };
 int piece_bishop_queen[13] = { FALSE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE, FALSE, TRUE, FALSE, TRUE, FALSE }; 
 
-int is_square_attacked(const int sq, const int side, const BOARD *pos) {
+int is_square_attacked(const int sq, const int side, BOARD *pos) {
+  ASSERT(square_on_board(sq));
+  ASSERT(side_valid(side));
+  ASSERT(check_board(pos));
+  
   if (side == WHITE) {
     if (pos->pieces[sq - 11] == wP || pos->pieces[sq - 9] == wP) {
       return TRUE;

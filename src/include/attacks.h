@@ -23,6 +23,6 @@ extern int piece_king[13];
 extern int piece_rook_queen[13];
 extern int piece_bishop_queen[13];
 
-int is_square_attacked(const int sq, const int side, const BOARD *pos);
+int is_square_attacked(const int sq, const int side, BOARD *pos);
 
 #endif
