@@ -42,3 +42,16 @@ char *print_move(const int move) {
 
   return move_string;
 }
+
+void print_move_list(const MOVELIST *list) {
+  printf("Move List: \n");
+
+  for (int i = 0; i < list->count; i ++) {
+    int move = list->moves[i].move;
+    int score = list->moves[i].score;
+
+    printf("Move: %d => %s (score: %d)\n", i + 1, print_move(move), score);
+  }
+
+  printf("Move list total: %d moves\n", list->count);
+}

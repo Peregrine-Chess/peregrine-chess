@@ -7,7 +7,6 @@
 
 #include <board.h>
 #include <stdio.h>
-
 #define FROM_SQ(m) ((m) & 0x7F)
 #define TO_SQ(m) (((m) >> 7) & 0x7F)
 #define CAPTURED(m) (((m) >> 14) & 0xF)
@@ -25,7 +24,14 @@ typedef struct MOVE {
   int score;
 } MOVE;
 
+typedef struct MOVELIST {
+  MOVE moves[MAX_POSITION_MOVES];
+  int count;
+} MOVELIST;
+
 char *print_square(const int square);
 char *print_move(const int move);
+
+void print_move_list(const MOVELIST *list);
 
 #endif

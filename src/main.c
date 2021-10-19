@@ -8,19 +8,23 @@
 #include <hashkeys.h>
 #include <attacks.h>
 #include <move.h>
+#include <movegen.h>
+
+#define TEST_FENW "rnbqkb1r/pp1p1pPp/8/2p1pP2/1P1P4/3P3P/P1P1P3/RNBQKBNR w KQkq e6 0 1"
+#define TEST_FENB "rnbqkbnr/p1p1p3/3p3p/1p1p4/2P1Pp2/8/PP1P1PpP/RNBQKB1R b KQkq e3 0 1"
 
 int main(void) {
   init_all();
 
-  int move = 0;
-  int from = a2, to = h7;
-  int cap = bN, prom = wB;
+  BOARD board[1];
 
-  move = ((from) | (to << 7) | (cap << 14) | (prom << 20));
+  parse_fen(TEST_FENB, board);
+  print_board(board);
 
-  printf("from: %d to: %d capture: %d promotion: %d\n", FROM_SQ(move), TO_SQ(move), CAPTURED(move), PROMOTED(move));
+  printf("\n\n");
 
-  printf("\nAlgebraic from: %s\n", print_square(from));
-  printf("Algebraic to: %s\n", print_square(to));
-  printf("Algebraic move: %s\n", print_move(move));
+  MOVELIST list[1];
+
+  generate_all_moves(board, list);
+  print_move_list(list);
 }
