@@ -6,6 +6,37 @@
 #include <validate.h>
 #include <data.h>
 
+int loop_slide_piece[8] = {
+  wB, wR, wQ, 0, bB, bR, bQ, 0
+};
+
+int loop_jump_piece[6] = {
+  wN, wK, 0, bN, bK, 0
+};
+
+int loop_slide_index[2] = { 0, 4 };
+int loop_jump_index[2] = { 0, 3 };
+
+int piece_dir[13][8] = {
+  {  0, 0, 0, 0, 0, 0, 0, 0 },
+  {  0, 0, 0, 0, 0, 0, 0, 0 },
+  { -8, -19, -21, -12, 8, 19, 21, 12 },
+  { -9, -11, 11, 9, 0, 0, 0, 0 },
+  { -1, -10,  1, 10, 0, 0, 0, 0 },
+  { -1, -10,  1, 10, -9, -11, 11, 9 },
+  { -1, -10,  1, 10, -9, -11, 11, 9 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { -8, -19, -21, -12, 8, 19, 21, 12 },
+  { -9, -11, 11, 9, 0, 0, 0, 0 },
+  { -1, -10,  1, 10, 0, 0, 0, 0 },
+  { -1, -10,  1, 10, -9, -11, 11, 9 },
+  { -1, -10,  1, 10, -9, -11, 11, 9 }
+};
+
+int num_dir[13] = {
+  0, 0, 8, 4, 4, 8, 8, 0, 8, 4, 4, 8, 8
+};
+
 void add_quiet_move(const BOARD *pos, int move, MOVELIST *list) {
   list->moves[list->count].move = move;
   list->moves[list->count].score = 0;
@@ -76,6 +107,8 @@ void generate_all_moves(BOARD *pos, MOVELIST *list) {
   int side = pos->side;
   int piece = EMPTY, sq = 0, t_sq = 0;
 
+  int dir = 0;
+
   if (side == WHITE) {
     // WHITE PAWNS
     for (int piece_num = 0; piece_num < pos->piece_num[wP]; piece_num ++) {
@@ -134,5 +167,74 @@ void generate_all_moves(BOARD *pos, MOVELIST *list) {
         add_capture_move(pos, ENCODE_MOVE(sq, sq - 11, EMPTY, EMPTY, MFLAGEP), list);
       }
     }
+  }
+
+  // SLIDING PIECES
+  int piece_index = loop_slide_index[side];
+  piece = loop_slide_piece[piece_index ++];
+
+  while (piece != 0) {
+    ASSERT(piece_valid(piece));
+    printf("sliders piece index: %d, piece %d\n", piece_index, piece);
+
+    for (int piece_num  = 0; piece_num < pos->piece_num[piece]; piece_num ++) {
+      sq = pos->piece_list[piece][piece_num];
+      ASSERT(square_on_board(sq));
+      printf("piece %c on %s\n", piece_char[piece], print_square(sq));
+
+      for (int i = 0; i < num_dir[piece]; i ++) {
+        dir = piece_dir[piece][i];
+        t_sq = sq + dir;
+
+        while (!SQ_OFFBOARD(t_sq)) {
+          if (pos->pieces[t_sq] != EMPTY) {
+            if (piece_color[pos->pieces[t_sq]] == (side ^ 1)) {
+              printf("\t\tCapture on %s\n", print_square(t_sq));
+            }
+            break;
+          }
+
+          printf("\t\tNormal on %s\n", print_square(t_sq));
+          t_sq += dir;
+        }
+      }
+    }
+
+    piece = loop_slide_piece[piece_index ++];
+  }
+
+  // JUMPING PIECES
+  piece_index = loop_jump_index[side];
+  piece = loop_jump_piece[piece_index ++];
+
+  while (piece != 0) {
+    ASSERT(piece_valid(piece));
+    printf("jumping piece index: %d, piece %d\n", piece_index, piece);
+
+    for (int piece_num  = 0; piece_num < pos->piece_num[piece]; piece_num ++) {
+      sq = pos->piece_list[piece][piece_num];
+      ASSERT(square_on_board(sq));
+      printf("piece %c on %s\n", piece_char[piece], print_square(sq));
+
+      for (int i = 0; i < num_dir[piece]; i ++) {
+        dir = piece_dir[piece][i];
+        t_sq = sq + dir;
+
+        if (SQ_OFFBOARD(t_sq)) {
+          continue;
+        }
+
+        if (pos->pieces[t_sq] != EMPTY) {
+          if (piece_color[pos->pieces[t_sq]] == (side ^ 1)) {
+            printf("\t\tCapture on %s\n", print_square(t_sq));
+          }
+          continue;
+        }
+
+        printf("\t\tNormal on %s\n", print_square(t_sq));
+      }
+    }
+
+    piece = loop_jump_piece[piece_index ++];
   }
 }

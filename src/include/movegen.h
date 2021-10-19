@@ -15,4 +15,7 @@ void add_en_passant_move(const BOARD *pos, int move, MOVELIST *list);
 void add_white_pawn_capture_move(const BOARD *pos, const int from, const int to, const int capture, MOVELIST *list);
 void add_white_pawn_move(const BOARD *pos, const int from, const int to, MOVELIST *list);
 
+void add_black_pawn_capture_move(const BOARD *pos, const int from, const int to, const int capture, MOVELIST *list);
+void add_black_pawn_move(const BOARD *pos, const int from, const int to, MOVELIST *list);
+
 void generate_all_moves(BOARD *pos, MOVELIST *list);

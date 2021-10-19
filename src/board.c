@@ -25,6 +25,7 @@ void reset_board(BOARD *pos) {
     pos->big_pieces[i] = 0;
     pos->major_pieces[i] = 0;
     pos->minor_pieces[i] = 0;
+    pos->material[i] = 0;
     pos->pawns[i] = 0ULL;
   }
 

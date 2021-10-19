@@ -18,4 +18,6 @@ extern int piece_minor[13];
 extern int piece_value[13];
 extern int piece_color[13];
 
+extern int piece_slides[13];
+
 #endif
