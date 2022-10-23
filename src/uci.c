@@ -88,8 +88,8 @@ void uci_parse_go(char *command) {
 }
 
 void uci_identify() {
-    printf("id name CCE 0.0.1\n");
-    printf("id author aa2006 & segfaultdev\n");
+    printf("id name Peregrine 0.0.1\n");
+    printf("id author adamtherookie\n");
     printf("uciok\n");
 }
 

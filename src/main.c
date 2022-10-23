@@ -19,5 +19,11 @@ int main() {
     // init EVERYTHING
     init_all();
 
-    uci_loop();
+    parsefen("rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq - 0 1");
+    
+    moves *move_list;
+    gen_moves(move_list);
+    print_move_list(move_list);
+    
+    //printf("%ld\n", Perft(2));
 }
