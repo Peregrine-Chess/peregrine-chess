@@ -5,6 +5,7 @@
 #include <log.h>
 
 void logger(int status, char *message) {
+  /*
   if (status) {
     fprintf(stderr, "\033[0;32m");
     fprintf(stderr, "[ OK ] ");
@@ -16,4 +17,7 @@ void logger(int status, char *message) {
     fprintf(stderr, "\033[0m");
     fprintf(stderr, "%s\n", message);
   }
+  */
+
+  return;
 }

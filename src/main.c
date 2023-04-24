@@ -16,14 +16,22 @@
 #include <uci.h>
 
 int main() {
-    // init EVERYTHING
     init_all();
 
-    parsefen("rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq - 0 1");
-    
-    moves *move_list;
-    gen_moves(move_list);
+    /*
+    parsefen("rn2k2r/p1p4p/1p3p2/2b3p1/3p1p2/5b2/PPPPP3/RNBnKB1R w kq - 0 1");
+
+    moves move_list[1];
+    legal_moves(move_list);
+
+    printboard();
+
+    print_attacked_squares(BLACK);
+
     print_move_list(move_list);
-    
-    //printf("%ld\n", Perft(2));
+  */    
+
+    uci_loop();
+
+    return 0;
 }

@@ -27,7 +27,7 @@ const int castling_rights[64] = {
 };
 
 void print_move(int move) {
-    printf("%s%s%c\n",  square_to_coords[get_move_start(move)],
+    printf("%s%s%c",  square_to_coords[get_move_start(move)],
                         square_to_coords[get_move_target(move)],
                         promoted_pieces[get_move_promoted(move)]);
 }
@@ -148,7 +148,9 @@ int make_move(int move, int move_flag) {
         occupancies[BOTH] |= occupancies[WHITE];
         occupancies[BOTH] |= occupancies[BLACK];
 
-        side ^= 1;
+        if(promoted != Q && promoted != q
+        && promoted != R && promoted != r
+        && promoted != B && promoted != b) side ^= 1;
 
         if (is_square_attacked((side == WHITE) ? get_least_significant_first_bit(bitboards[k]) : get_least_significant_first_bit(bitboards[K]), side)) {
             restore_board();

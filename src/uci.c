@@ -71,7 +71,7 @@ void uci_parse_position(char *pos) {
             current_char ++;
         }
     }
-    printboard();
+    //printboard();
 }
 
 void uci_parse_go(char *command) {
@@ -79,12 +79,22 @@ void uci_parse_go(char *command) {
 
     char *current_depth = NULL;
     if ((current_depth = strstr(command, "depth"))) {
-        depth = atoi(current_depth + 6);
+        depth = atoi(current_depth + 2);
     } else {
-        depth = 6;
+        depth = 2;
     }
 
-    printf("depth: %d\n", depth);
+    int search = 0; 
+
+    int temp_side = side;
+    do {
+        side = temp_side;
+        search = search_position(depth);
+    } while(!search);
+
+    // printboard();
+
+    (temp_side == WHITE) ? (side = BLACK) : (side = WHITE);
 }
 
 void uci_identify() {
@@ -99,7 +109,7 @@ void uci_loop() {
 
     char input[2000];
 
-    uci_identify();
+    // uci_identify();
 
     while(1) {
         memset(input, 0, sizeof(input));
@@ -112,10 +122,16 @@ void uci_loop() {
             continue;
         } else if (strncmp(input, "position", 8) == 0) {
             uci_parse_position(input);
+            continue;
         } else if (strncmp(input, "ucinewgame", 10) == 0) {
             uci_parse_position("position startpos");
+            continue;
         } else if (strncmp(input, "go", 2) == 0) {
             uci_parse_go(input);
+            continue;
+        } else if (strncmp(input, "uci", 3) == 0) {
+            uci_identify();
+            continue;
         }
     }
 }

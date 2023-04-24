@@ -120,10 +120,10 @@ void parsefen(char *fen) {
       case '-': break;
     }
 
-    *fen++;
+    fen++;
   }
-  
-  *fen++;
+
+  fen++;
 
   if (*fen != '-') {
     int file = fen[0] - 'a';

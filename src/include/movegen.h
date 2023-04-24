@@ -10,5 +10,6 @@
 #include <attacks.h>
 
 void gen_moves(moves *move_list);
+void legal_moves(moves *move_list);
 
 #endif

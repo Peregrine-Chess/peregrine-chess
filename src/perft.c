@@ -18,10 +18,9 @@ uint64_t Perft(int depth) {
   for (i = 0; i < n_moves; i++) {
     copy_board();
 
-    if (!make_move(move_list->moves[i], all_moves))
-        continue;
-
-    nodes += Perft(depth - 1);
+    if (make_move(move_list->moves[i], all_moves))
+      nodes += Perft(depth - 1);
+    
     restore_board();
   }
   

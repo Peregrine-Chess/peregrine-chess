@@ -40,12 +40,12 @@ extern int side_copy, en_passant_copy, castle_copy;
    0100    4  black king can castle to the king side
    1000    8  black king can castle to the queen side
    examples
-   1111       both sides an castle both directions
-   1001       black king => queen side
-              white king => king side
+   1111       both sides can castle both directions
+   1000       black king => queen side
+   0001       white king => king side
 */
 
-enum { WK = 1, WQ = 2, BK = 3, BQ = 4 };
+enum { WK = 1, WQ = 2, BK = 4, BQ = 8 };
 
 // pieces
 enum { P, N, B, R, Q, K, p, n, b, r, q, k };

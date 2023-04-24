@@ -54,7 +54,7 @@ int init_attacks() {
 
 // Get pawn attacks for a specific square and color
 
-Bitboard get_pawn_attacks(int square, int color) {
+Bitboard get_pawn_attacks(int color, int square) {
   Bitboard bitboard = 0ULL, attacks = 0ULL;
 
   set_bit(bitboard, square);
@@ -105,14 +105,14 @@ Bitboard get_king_attacks(int square) {
 
   // Same logic. ITS THE SAME STOP READING THESE THINGS
 
-  if ((bitboard >> 1) & not_h_file) attacks |= (bitboard >> 1);
-  if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
-  if (bitboard >> 8) attacks |= (bitboard >> 8);
-  if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
-  if ((bitboard << 1) & not_a_file) attacks |= (bitboard << 1);
-  if ((bitboard << 9) & not_a_file) attacks |= (bitboard << 9);
-  if (bitboard << 8) attacks |= (bitboard << 8);
-  if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
+    if (bitboard >> 8)                attacks |= (bitboard >> 8);
+    if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
+    if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
+    if ((bitboard >> 1) & not_h_file) attacks |= (bitboard >> 1);
+    if (bitboard << 8)                attacks |= (bitboard << 8);
+    if ((bitboard << 9) & not_a_file) attacks |= (bitboard << 9);
+    if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
+    if ((bitboard << 1) & not_a_file) attacks |= (bitboard << 1);
 
   return attacks;
 }
@@ -235,8 +235,8 @@ Bitboard rook_attacks_otf(int square, Bitboard block) {
 
 int init_pawn_attacks() {
   for (int i = 0; i < 64; i ++) {
-    pawn_attacks[WHITE][i] = get_pawn_attacks(i, WHITE);
-    pawn_attacks[BLACK][i] = get_pawn_attacks(i, BLACK);
+    pawn_attacks[WHITE][i] = get_pawn_attacks(WHITE, i);
+    pawn_attacks[BLACK][i] = get_pawn_attacks(BLACK, i);
   }
   return 1;
 }

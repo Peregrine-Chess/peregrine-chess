@@ -9,6 +9,7 @@
 #include <movegen.h>
 #include <bitboard.h>
 #include <string.h>
+#include <search.h>
 
 int uci_parse_move(char *move_string);
 void uci_parse_position(char *pos);
