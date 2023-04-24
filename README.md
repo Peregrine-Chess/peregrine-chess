@@ -1,4 +1,3 @@
-> Note: this repo is archived. I've encountered many bugs that I wasn't able to solve and I'm not willing to continue working on it anytime soon.
 
 <div align="center">
     <img src="./art/falcon-padding-big.png"><br>
